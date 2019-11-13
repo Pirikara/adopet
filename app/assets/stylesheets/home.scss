@@ -1,0 +1,296 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//ヘッダー部
+.top-content{
+  position: relative;
+  width: 100vw;
+  min-height: 800px;
+  max-height: 1500px;
+  background-image: url('top_background-image.jpg');
+  background-size: cover;
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    &--lists{
+      display: flex;
+      justify-content: space-between;
+      &--list{
+        margin-top: 20px;
+        margin-right: 30px;
+        font-weight: bold;
+        color: #fff;
+      }
+      :last-of-type{
+        margin-right: 20px;
+      }
+    }
+  }
+  &__search-form{
+    opacity: 0.8;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 32px;
+    padding-bottom: 24px;
+    width: 441px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    position: absolute;
+    left: 50px;
+    bottom: 90px;
+    &--box{
+      font-size: 30px;
+      line-height: 36px;
+      letter-spacing: normal;
+      color: #484848;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      margin: 0px;
+      padding: 0px;
+      &--title{
+        color: #484848;
+        font-size: 1em;
+        font-weight: 800;
+        line-height: inherit;
+        margin: 0px;
+        padding: 0px;
+      }
+      &--main{
+        box-sizing: border-box;
+        background: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 0 black;
+        form{
+          display: block;
+          margin-top: 0em;
+          .top-content__search-form--box--main--field{
+            margin-top: 16px;
+            label{
+              line-height: normal;
+              .top-content__search-form--box--main--field--label--area{
+                font-size: 12px;
+                font-weight: 800;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+              }
+              div{
+                input{
+                  padding-left: 12px;
+                  padding-right: 12px;
+                  position: relative;
+                  align-items: center;
+                  background-color: #fff;
+                  border: 1px solid #EBEBEB;
+                  border-radius: 4px;
+                  display: flex;
+                  height: 48px;
+                  width: 94%;
+                }
+              }
+              .top-content__search-form--box--main--field--label--category{
+                font-size: 12px;
+                font-weight: 800;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+              }
+            }
+            &--submit{
+              margin-top: 16px;
+              display: flex;
+              justify-content: center;
+              &-btn{
+                background-color: #3EC1C9;
+                width: 150px;
+                border-radius: 15px;
+                color: #fff;
+                font-size: 16px;
+                line-height: 24px;
+                letter-spacing: normal;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-weight: 800;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//ナビゲーション部
+.nav{
+  background-color: #FFF;
+  height: 460px;
+  overflow-y: hidden;
+  margin: -10px;
+  padding: 40px;
+  &__title{
+    h2{
+      font-size: 25px;
+      font-weight: bold;
+      color: #484848;
+    }
+  }
+  &__link{
+    float: right;
+    a{
+      text-decoration: none;
+      h2{
+        font-size: 15px;
+        font-weight: 800;
+        color: #3EC1C9;  
+      }
+    }
+  }
+  &__content{
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex;
+    padding-bottom: 100px;
+    margin-top: 50px;
+    &--box{
+      width: 350px;
+      margin-right: 20px;
+      border-radius: 10px;
+      a{
+        text-decoration: none;
+        img{
+          width: 300px;
+          height: 200px;
+          border-radius: 10px;
+        }
+        .nav__content--box--text{
+          margin: 0 auto;
+          p{
+            color: #484848;
+            font-size: 15px;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+//メインコンテンツ部
+.main-content{
+  height: 1200px;
+  background-color: #EFEFEF;
+  &__video{
+    padding: 24px 40px 0px 40px;
+    position: relative;
+    &--mp4{
+      height: 400px;
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 15px;
+      position: relative;
+    }
+    &--title{
+      position: absolute;
+      left: 60px;
+      bottom: 200px;
+      z-index: 1;
+      h1{
+        color: #fff;
+        font-size: 50px;
+        letter-spacing: 4px;
+        font-weight: 800;
+      }
+    }
+  }
+  &__menu{
+    padding: 40px;
+    &--title{
+      h2{
+        font-size: 25px;
+        font-weight: bold;
+        color: #484848;
+      }
+    }
+    &--contents{
+      &--reviews{
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        &--review{
+          height: 500px;
+          background-color: #fff;
+          border-radius: 10px;
+          border:1px solid #484848;
+          img{
+            border-radius: 10px 10px 0 0 / 10px 10px 0 0;
+            -webkit-border-radius: 10px 10px 0 0 / 10px 10px 0 0;
+            -moz-border-radius: 10px 10px 0 0 / 10px 10px 0 0;
+            width: 450px;
+            height: 300px;
+          }
+          &--text{
+            line-height: 150px;
+            margin: 0 auto;
+            p{
+              color: #484848;
+              font-size: 15px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+  }  
+  &__submit{
+    display: flex;
+    justify-content: center;
+    a{
+      text-align: center;
+      button{
+        background-color: #3EC1C9;
+        width: 250px;
+        border-radius: 15px;
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: normal;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+//フッター部
+footer{
+  height: 400px;
+  .footer__content{
+    &--logo{
+      display: flex;
+      justify-content: center;
+    }
+    &--text{
+      display: flex;
+      justify-content: center;
+      &__lists{
+        display: flex;
+        justify-content: space-between;
+        li{
+          width: 80px;
+          border-right: 1px solid #484848;
+          text-align: center;
+        }
+        :last-of-type{
+          border-right: none;
+        }
+      }
+    }
+    &--copywrite{
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+    }
+  }
+}

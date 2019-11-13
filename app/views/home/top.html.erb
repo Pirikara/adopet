@@ -1,0 +1,219 @@
+<div class="wrapper">
+  <div class="top-content">
+    <div class="top-content__header">
+      <a href="/" class="top-content__header--icon">
+        <%= image_tag 'logo_top.png', width: '200', height: '200' %>
+      </a>    
+      <ul class="top-content__header--lists">
+        <li class="top-content__header--lists--list">HELP</li>
+        <li class="top-content__header--lists--list">SIGN IN</li>
+        <li class="top-content__header--lists--list">SIGN UP</li>
+      </ul>
+    </div>
+    <div class="top-content__search-form">
+      <div class="top-content__search-form--box">
+        <h1 class="top-content__search-form--box--title">新しい家族を探しましょう</h1>
+      </div>
+      <div class="top-content__search-form--box--main">      
+        <form>
+          <div class="top-content__search-form--box--main--field">
+            <label for="area" class="top-content__search-form--box--main--field--label">
+              <div class="top-content__search-form--box--main--field--label--area">エリア</div>
+              <div class="">
+                <input type="text" id="area" placeholder="エリアを入力してください">
+              </div>
+            </label>
+          </div>
+          <div class="top-content__search-form--box--main--field">
+            <label for="category" class="top-content__search-form--box--main--field--label">
+              <div class="top-content__search-form--box--main--field--label--category">カテゴリ</div>
+              <div>
+                <input type="text" id="category" placeholder="カテゴリを選んでください">
+              </div>
+            </label>
+          </div>
+          <div class="top-content__search-form--box--main--field--submit">
+            <button type="submit" class="top-content__search-form--box--main--field--submit-btn">
+              <span>search</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <div class="nav__title">
+      <h2>adopetで探す</h2>
+      <p>たくさんのペット達が新しい家族を探しています</p>
+    </div>
+    <div class="nav__link">
+      <%= link_to "#" do %>
+        <h2>すべてのペットを表示 ></h2>
+      <% end %>
+    </div>
+    <ul class="nav__content">
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_dog.jpg" %>
+          <div class="nav__content--box--text">
+            <p>COCO</p>
+            <p>ラブラドール・レトリバー</p>
+            <p>6ヵ月</p>
+            <p>男の子</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_cat.jpg" %>
+          <div class="nav__content--box--text">
+            <p>mike</p>
+            <p>雑種</p>
+            <p>7ヵ月</p>
+            <p>女の子</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_bird.jpg" %>
+          <div class="nav__content--box--text">
+            <p>Hinata</p>
+            <p>桜文鳥</p>
+            <p>1歳</p>
+            <p>女の子</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_reptile.jpg" %>
+          <div class="nav__content--box--text">
+            <p>LEO</p>
+            <p>インドシナウォータードラゴン</p>
+            <p>2歳</p>
+            <p>男の子</p>
+          </div>
+        <% end %>
+      </li>
+            <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_dog.jpg" %>
+          <div class="nav__content--box--text">
+            <p>SORA</p>
+            <p>ゴールデンレトリーバー</p>
+            <p>4ヵ月</p>
+            <p>男の子</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_cat.jpg" %>
+          <div class="nav__content--box--text">
+            <p>CAT</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_bird.jpg" %>
+          <div class="nav__content--box--text">
+            <p>BIRD</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_reptile.jpg" %>
+          <div class="nav__content--box--text">
+            <p>REPTILE</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_dog.jpg" %>
+          <div class="nav__content--box--text">
+            <p>DOG</p>
+          </div>
+        <% end %>
+      </li>
+      <li class="nav__content--box">
+        <%= link_to "#" do%>
+          <%= image_tag "home_top/nav_cat.jpg" %>
+          <div class="nav__content--box--text">
+            <p>CAT</p>
+          </div>
+        <% end %>
+      </li>     
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="main-content__video">
+      <video muted class="main-content__video--mp4" src="/assets/top_middle-ce66ef5d21e576f5429b241a4d31df7699e836f8431be20eaf5ad6dfb726f238.mp4" autoplay loop style="object-fit: cover;">
+      </video>
+      <div class="main-content__video--title">
+        <h1>STORY</h1>
+      </div>
+    </div>
+    <div class="main-content__menu">
+      <div class="main-content__menu--title">
+        <h2>たくさんのペット達が家族を見つけています</h2>  
+      </div>
+      <div class="main-content__menu--contents">
+        <ul class="main-content__menu--contents--reviews">
+          <li class="main-content__menu--contents--reviews--review">
+            <%= link_to "#" do%>
+              <%= image_tag "home_top/nav_dog.jpg" %>
+              <div class="main-content__menu--contents--reviews--review--text">
+                <p></p>
+              </div>
+            <% end %>
+          </li>
+          <li class="main-content__menu--contents--reviews--review">
+            <%= link_to "#" do%>
+              <%= image_tag "home_top/nav_cat.jpg" %>
+              <div class="main-content__menu--contents--reviews--review--text">
+                <p></p>
+              </div>
+            <% end %>
+          </li>
+          <li class="main-content__menu--contents--reviews--review">
+            <%= link_to "#" do%>
+              <%= image_tag "home_top/nav_bird.jpg" %>
+              <div class="main-content__menu--contents--reviews--review--text">
+                <p></p>
+              </div>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-content__submit">
+      <%= link_to "#" do %>
+        <button type="button">他のSTORYも見てみる</button>
+      <% end %>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="footer__content">
+      <div class="footer__content--logo">
+        <%= image_tag 'logo_bottom.png', width: '200', height: '200' %>
+      </div>
+      <div class="footer__content--text">
+        <ul class="footer__content--text__lists">
+          <li>ヘルプ</li>
+          <li>検索</li>
+          <li>利用規約</li>
+        </ul>
+      </div>
+      <div class="footer__content--copywrite">
+        ©️2019 adopet
+      </div>
+    </div>
+  </footer>
