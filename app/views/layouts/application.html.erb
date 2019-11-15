@@ -6,11 +6,70 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div class="top-content">
+      <% if user_signed_in? %>
+        <div class="top-content__header">
+          <a href="/" class="top-content__header--icon">
+            <%= image_tag 'logo_top.png' %>
+          </a>    
+          <ul class="top-content__header--lists">
+            <li class="top-content__header--lists--list">
+              <%= link_to "#{current_user.name}", "users/#{current_user.id}" %>
+            </li>
+            <li class="top-content__header--lists--list">HELP</li>
+            <li class="top-content__header--lists--list">
+              <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </div>
+      <% else%>
+        <div class="top-content__header">
+          <a href="/" class="top-content__header--icon">
+            <%= image_tag 'logo_top.png' %>
+          </a>    
+          <ul class="top-content__header--lists">
+            <li class="top-content__header--lists--list">HELP</li>
+            <li class="top-content__header--lists--list sign_button sign_in_button">SIGN IN</li>
+            <li class="top-content__header--lists--list sign_button sign_up_button">SIGN UP</li>
+          </ul>
+        </div>
+      <% end %>
+      <div class="top-content__search-form">
+        <div class="top-content__search-form--box">
+          <h1 class="top-content__search-form--box--title">新しい家族を探しましょう</h1>
+        </div>
+        <div class="top-content__search-form--box--main">      
+          <form>
+            <div class="top-content__search-form--box--main--field">
+              <label for="area" class="top-content__search-form--box--main--field--label">
+                <div class="top-content__search-form--box--main--field--label--area">エリア</div>
+                <div class="">
+                  <input type="text" id="area" placeholder="エリアを入力してください">
+                </div>
+              </label>
+            </div>
+            <div class="top-content__search-form--box--main--field">
+              <label for="category" class="top-content__search-form--box--main--field--label">
+                <div class="top-content__search-form--box--main--field--label--category">カテゴリ</div>
+                <div>
+                  <input type="text" id="category" placeholder="カテゴリを選んでください">
+                </div>
+              </label>
+            </div>
+            <div class="top-content__search-form--box--main--field--submit">
+              <button type="submit" class="top-content__search-form--box--main--field--submit-btn">
+                <span>search</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

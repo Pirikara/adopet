@@ -1,0 +1,62 @@
+<div class="sign_modal_wrapper">
+  <div class="sign_modal">
+    <div class="sign_up_modal sign_modal_content">
+      <i class="fas fa-times"></i>
+      <h2>新規登録フォーム</h2>
+      
+      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+
+        <div class="field">
+          <label for="user_name"></label><br>
+          <input class="field__input" autofocus="autofocus" autocomplete="name" type="name" value="" name="user[name]" placeholder="Name">
+        </div>
+
+        <div class="field">
+          <label for="user_email"></label><br>
+          <input class="field__input" autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" placeholder="Email">
+        </div>
+
+        <div class="field">
+          <label for="user_password"></label>
+          <br>
+          <input class="field__input" autocomplete="new-password" type="password" name="user[password]" aria-autocomplete="list" placeholder="Password">
+        </div>
+
+        <div class="field">
+          <label for="user_password_confirmation"></label><br>
+          <input class="field__input" autocomplete="new-password" type="password" name="user[password_confirmation]" placeholder="Password confirmation">
+        </div>
+
+        <div class="actions">
+          <input type="submit" name="commit" value="Sign up" data-disable-with="Sign up">
+        </div>
+      <% end %>
+    </div>
+
+    <div class="sign_in_modal sign_modal_content">
+      <i class="fas fa-times"></i>
+      <h2>ログインフォーム</h2>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <div class="field">
+          <label for="user_email"></label><br>
+          <input class="field__input" autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" placeholder="Email">
+        </div>
+
+        <div class="field">
+          <label for="user_password"></label><br>
+          <input class="field__input" autocomplete="current-password" type="password" name="user[password]" placeholder="Password">
+        </div>
+
+        <div class="field">
+          <input class="field__remember" name="user[remember_me]" type="hidden" value="0">
+          <input class="field__remember" type="checkbox" value="1" name="user[remember_me]">
+          <label class="field__remember-me" for="user_remember_me">Remember me</label>
+        </div>
+
+        <div class="actions">
+          <input type="submit" name="commit" value="Log in" data-disable-with="Log in">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
