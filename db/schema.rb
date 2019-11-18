@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_121632) do
+ActiveRecord::Schema.define(version: 2019_11_15_093408) do
+
+  create_table "animals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "state", null: false
+    t.text "description", null: false
+    t.bigint "category_id", null: false
+    t.bigint "area_id", null: false
+    t.bigint "giver_id", null: false
+    t.bigint "taker_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_animals_on_area_id"
+    t.index ["category_id"], name: "index_animals_on_category_id"
+    t.index ["giver_id"], name: "index_animals_on_giver_id"
+    t.index ["name"], name: "index_animals_on_name"
+    t.index ["taker_id"], name: "index_animals_on_taker_id"
+  end
+
+  create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -25,4 +54,8 @@ ActiveRecord::Schema.define(version: 2019_11_13_121632) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "animals", "areas"
+  add_foreign_key "animals", "categories"
+  add_foreign_key "animals", "users", column: "giver_id"
+  add_foreign_key "animals", "users", column: "taker_id"
 end

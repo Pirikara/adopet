@@ -1,0 +1,183 @@
+// Place all the styles related to the animals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//フォームヘッダー
+.animal-wrapper{
+  position: relative;
+  height: 1500px;
+  background-color: #EFEFEF;
+  &__form{
+    width: 700px;
+    margin: 0 auto;
+    position: relative;
+    &--container{
+      width: 100%;
+      height: 1280px;
+      background-color: #fff;
+      position: absolute;
+      top: 50px;
+      &--header{
+        border-bottom: 2px solid #EFEFEF;
+        h2{
+          padding: 32px 16px;
+          font-size: 22px;
+          font-weight: 800;
+          color: #484848;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+//メインフォーム
+.animal-form{
+  &__upload-box{
+    width: 620px;
+    height: 220px;
+    padding: 40px;
+    label{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    span{
+      font-size: 12px;
+      margin: 0 0 0 8px;
+      padding: 2px 4px;
+      border-radius: 2px;
+      color: #fff;
+      background-color: #3EC1C9;
+      vertical-align: top;
+    }
+    p{
+      margin: 8px 0 0;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+    &__images{
+      display: block;
+      width: 620px;
+      &__uploader{
+        width: 100%;
+        margin-left: 0;
+        position: relative;
+        min-height: 162px;
+        background: #EFEFEF;
+        border: 1px dashed #ccc;
+        text-align: center;
+        transition: box-shadow ease-out .3s, -webkit-box-shadow ease-out .3s;
+        cursor: pointer;
+        float: right;
+        pre{
+          position: absolute;
+          top: 50%;
+          left: 16px;
+          right: 16px;
+          text-align: center;
+          font-size: 14px;
+          line-height: 1.5;
+          transform: translate(0, -50%);
+          pointer-events: none;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
+      }
+    }
+  }
+  &__content{
+    padding: 40px;
+    border-top: 2px solid #EFEFEF;
+    &--group:first-of-type{
+      margin-top: 0;
+    }
+    &--group{
+      margin: 40px 0 0;
+      label{
+        font-weight: 600;
+      }
+      span{
+        font-size: 12px;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        background-color: #3EC1C9;
+        vertical-align: top;
+      }
+      &__name{
+        input{
+          width: 100%;
+          margin: 8px 0 0;
+          height: 48px;
+          border-radius: 4px;
+          border: 1px solid #EFEFEF;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+      }
+      &__text{
+        textarea{
+          margin: 8px 0 0;
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          min-height: 104px;
+          border: 1px solid #EFEFEF;
+          font-size: 16px;
+          line-height: 1.5;
+        }
+      }
+    }
+    h3{
+      margin-bottom: 40px;
+      color: #484848;
+    }
+    &--group{
+      &__select{
+        select{
+          height: 48px;
+          border-radius: 4px;
+          border: 1px solid #EFEFEF;
+          font-size: 16px;
+          line-height: 1.5;
+          cursor: pointer;
+          padding: 0 16px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+//送信ボタン
+
+.submit-box{
+  input{
+    background: #3EC1C9;
+    border: 1px solid #3EC1C9;
+    color: #fff;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 48px;
+    transition: all ease-out .3s;
+    text-align: center;
+  }
+  a{
+    margin: 24px auto;
+    background: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+    display: block;
+    width: 45%;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 48px;
+    transition: all ease-out .3s;
+    text-align: center;
+    text-decoration: none;
+  }
+}
