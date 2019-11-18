@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adopet</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="/" class="header--icon">
+        <%= image_tag 'logo_bottom.png' %>
+      </a>    
+      <ul class="header--lists">
+        <li class="header--lists--list">
+          <%= link_to "#{current_user.name}", "users/#{current_user.id}" %>
+        </li>
+        <li class="header--lists--list">HELP</li>
+        <li class="header--lists--list">
+          <%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <%= yield %>
+  </body>
+</html>

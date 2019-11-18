@@ -1,0 +1,62 @@
+<div class="animal-wrapper">
+  <div class="animal-wrapper__form">
+    <div class="animal-wrapper__form--container">
+      <div class="animal-wrapper__form--container--header">
+        <h2>ペットの情報を入力</h2>
+      </div>
+      <div class="animal-wrapper__form--container--main">
+        <%= form_with model: @animal, class: "animal-form", local: true do |f| %>
+          <div class="animal-form__upload-box">
+            <%= f.label :image, "画像" %>
+            <span>必須</span>
+            <p>最大5枚までアップロードできます</p>
+            <div class="animal-form__upload-box__images">
+              <div class="animal-form__upload-box__images__uploader">
+                <%= f.file_field :name%>
+                <pre class="visible-pc">クリックしてファイルをアップロード</pre>
+              </div>
+            </div>
+          </div>
+          <div class="animal-form__content">
+            <div class="animal-form__content--group">
+              <%= f.label :name, "名前"%>
+              <span>必須</span>
+              <div class="animal-form__content--group__name">
+                <%= f.text_field :name %>
+              </div>
+            </div>
+            <div class="animal-form__content--group">
+              <%= f.label :description, "説明" %>
+              <span>必須</span>
+              <div class="animal-form__content--group__text">
+                <%= f.text_area :description %>
+              </div>
+            </div>
+          </div>
+          <div class="animal-form__content clearfix">
+            <h3>詳細情報</h3>
+            <div class="animal-form__content--group">
+              <%= f.label :category, "カテゴリー" %>
+              <span>必須</span>
+              <div class="animal-form__content--group__select">
+                <%= f.select :category_id, Category.all.map {|category| [category.name, category.id]} %>
+              </div>
+            </div>
+            <div class="animal-form__content--group">
+              <%= f.label :area, "エリア" %>
+              <span>必須</span>
+              <div class="animal-form__content--group__select">
+                <%= f.select :area_id, Area.all.map {|area| [area.name, area.id]}%>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="animal-form__content submit-box">
+            <%= f.submit "募集する" %>
+            <%= link_to "もどる", root_path %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
