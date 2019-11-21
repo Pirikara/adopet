@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_093408) do
+ActiveRecord::Schema.define(version: 2019_11_18_062821) do
 
   create_table "animals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2019_11_15_093408) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "animal_id", null: false
+    t.text "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_images_on_animal_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -58,4 +66,5 @@ ActiveRecord::Schema.define(version: 2019_11_15_093408) do
   add_foreign_key "animals", "categories"
   add_foreign_key "animals", "users", column: "giver_id"
   add_foreign_key "animals", "users", column: "taker_id"
+  add_foreign_key "images", "animals"
 end
