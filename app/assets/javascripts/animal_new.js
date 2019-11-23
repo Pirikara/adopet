@@ -118,5 +118,4 @@ $(function(){
     $(DropArea1).addClass(have_preview)
     hideDropArea();
   });
-
-})
+});
