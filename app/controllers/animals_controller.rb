@@ -13,6 +13,14 @@ class AnimalsController < ApplicationController
 
   def create
     @animal = Animal.new(animal_params)
+    if @animal.save
+      params[:images][:image_url].each do |image|
+        @animal.images.create!(image_url: image, animal_id: @animal.id)
+      end
+      redirect_to root_path
+    else
+      redirect_to new_animal_path
+    end
   end
   
   def show
@@ -33,9 +41,8 @@ class AnimalsController < ApplicationController
       params.require(:animal).permit(
         :name,
         :description,
-        :category_id,
-        :area_id,
-        images_attributes: [:image_url]
-        ).merge(user_id: current_user.id)
+        :category,
+        :prefecture,
+        images_attributes: [:image_url]).merge(giver_id: current_user.id)
     end
 end
