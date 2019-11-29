@@ -86,6 +86,19 @@
         <div class="animal-information__header">
           <div class="animal-information__header--name">
             <%= @animal.name %>
+            <% if @animal.gender.id == 1 %>
+            <div class="animal-information__header--name--male">
+              <i class="fas fa-mars"></i>
+            </div>
+            <% elsif @animal.gender.id == 2 %>
+            <div class="animal-information__header--name--female">
+              <i class="fas fa-venus"></i>
+            </div>
+            <% else %>
+            <div class="animal-information__header--name--unknown">
+              性別不明
+            </div>
+            <% end %>
           </div>
           <div class="animal-information__header--prefecture">
             <%= @animal.prefecture.name %>

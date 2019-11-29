@@ -60,6 +60,13 @@
               <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '---'%>
             </div>
           </div>
+          <div class="animal-form__content--group">
+            <%= f.label :gender_id, "性別" %>
+            <span>必須</span>
+            <div class="animal-form__content--group__select">
+              <%= f.collection_select :gender_id, Gender.all, :id, :name, include_blank: '---' %>
+            </div>
+          </div>
         </div>
 
         <div class="animal-form__content submit-box">

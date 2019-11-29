@@ -19,6 +19,19 @@
           </div>
           <div class="animal-show__link--name">
             <%= animal.name%>
+            <% if animal.gender.id == 1 %>
+            <div class="animal-show__link--name--gender--male">
+              <i class="fas fa-mars"></i>
+            </div>
+            <% elsif animal.gender.id == 2%>
+            <div class="animal-show__link--name--gender--female">
+              <i class="fas fa-venus"></i>
+            </div>
+            <% else %>
+            <div class="animal-show__link--name--gender--unknown">
+              <%= animal.gender.name%>
+            </div>
+            <% end %>
           </div>
           <div class="animal-show__link--username">
             <%= animal.giver.name%>

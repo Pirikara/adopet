@@ -119,8 +119,23 @@
   width: 50%;
   &__header{
     &--name{
+      display: flex;
       font-size: 30px;
       font-weight: bold;
+      &--male{
+        margin-left: 10px;
+        color: blue;
+      }
+      &--female{
+        margin-left: 10px;
+        color: red;
+      }
+      &--unknown{
+        margin-left: 10px;
+        color: #aaa;
+        font-size: 15px;
+        line-height: 45px;
+      }
     }
     &--prefecture{
       color: #484848;
