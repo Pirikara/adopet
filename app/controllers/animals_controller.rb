@@ -46,6 +46,7 @@ class AnimalsController < ApplicationController
         :description,
         :category_id,
         :prefecture_id,
+        :gender_id,
         images_attributes: [:image_url]).merge(giver_id: current_user.id)
     end
 

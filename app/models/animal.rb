@@ -10,4 +10,5 @@ class Animal < ApplicationRecord
   belongs_to :giver, class_name: 'User'
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :category
+  belongs_to_active_hash :gender
 end

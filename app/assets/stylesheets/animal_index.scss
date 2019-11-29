@@ -95,7 +95,28 @@
     }
   }
   &--name{
-
+    display: flex;
+    justify-content: center;
+    &--gender{
+      &--male{
+        color: blue;
+        font-size: 16px;
+        line-height: 24px;
+        margin-left: 10px;
+      }
+      &--female{
+        color: red;
+        font-size: 16px;
+        line-height: 24px;
+        margin-left: 10px;
+      }
+      &--unknown{
+        color: #aaa;
+        font-size: 12px;
+        line-height: 24px;
+        margin-left: 10px;
+      }
+    }
   }
   &--username{
     font-size: 12px;
