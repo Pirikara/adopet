@@ -21,7 +21,19 @@
   height: 100vh;
   background-image: url('top_background-image.jpg');
   background-size: cover;
+  video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1
+  }
   &__header{
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     &--icon{
@@ -80,6 +92,7 @@
     position: absolute;
     left: 50px;
     bottom: 200px;
+    z-index: 2;
     &:hover{
       opacity: 1;
     }
@@ -141,20 +154,36 @@
             }
             &--submit{
               margin-top: 16px;
-              display: flex;
-              justify-content: center;
+              text-align: center;
               &-btn{
+                margin: 15px auto;
                 background-color: #3EC1C9;
-                width: 150px;
-                border-radius: 15px;
+                width: 100%;
+                border-radius: 4px;
                 color: #fff;
                 font-size: 16px;
                 line-height: 24px;
                 letter-spacing: normal;
                 padding-top: 10px;
                 padding-bottom: 10px;
+                cursor: pointer;
+              }
+              .nav__link{
+                margin: 15px auto;
+                background-color: #aaa;
+                width: 100;
+                border-radius: 4px;
+                line-height: 24px;
+                letter-spacing: normal;
+                padding-top: 10px;
+                padding-bottom: 10px;
                 font-weight: 800;
                 cursor: pointer;
+                a{
+                  text-decoration: none;
+                  font-size: 16px;
+                  color: #fff;
+                }
               }
             }
           }
