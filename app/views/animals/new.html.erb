@@ -47,17 +47,17 @@
         <div class="animal-form__content clearfix">
           <h3>詳細情報</h3>
           <div class="animal-form__content--group">
-            <%= f.label :category, "カテゴリー" %>
+            <%= f.label :category_id, "カテゴリー" %>
             <span>必須</span>
             <div class="animal-form__content--group__select">
-              <%= f.collection_select :category, Category.all, :id, :name, include_blank: '---' %>
+              <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: '---' %>
             </div>
           </div>
           <div class="animal-form__content--group">
-            <%= f.label :area, "エリア" %>
+            <%= f.label :prefecture_id, "エリア" %>
             <span>必須</span>
             <div class="animal-form__content--group__select">
-              <%= f.collection_select :prefecture, Prefecture.all, :id, :name, include_blank: '---'%>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '---'%>
             </div>
           </div>
         </div>
