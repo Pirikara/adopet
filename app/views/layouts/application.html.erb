@@ -13,6 +13,8 @@
   <body>
     <div class="top-content">
       <% if user_signed_in? %>
+        <video muted class="main-content__video--mp4" src="/assets/top_middle-ce66ef5d21e576f5429b241a4d31df7699e836f8431be20eaf5ad6dfb726f238.mp4" autoplay loop style="object-fit: cover;">
+        </video>        
         <div class="top-content__header">
           <a href="/" class="top-content__header--icon">
             <%= image_tag 'logo_top.png' %>
@@ -28,6 +30,8 @@
           </ul>
         </div>
       <% else%>
+        <video muted class="main-content__video--mp4" src="/assets/top_middle-ce66ef5d21e576f5429b241a4d31df7699e836f8431be20eaf5ad6dfb726f238.mp4" autoplay loop style="object-fit: cover;">
+        </video>
         <div class="top-content__header">
           <a href="/" class="top-content__header--icon">
             <%= image_tag 'logo_top.png' %>
@@ -65,6 +69,12 @@
               <button type="submit" class="top-content__search-form--box--main--field--submit-btn">
                 <span>search</span>
               </button>
+              or
+              <div class="nav__link">
+                <%= link_to animals_path do%>
+                  <h2>すべてのペットを見に行く</h2>
+                <% end %>
+              </div>
             </div>
           </form>
         </div>
