@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2019_11_18_062821) do
   create_table "animals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.integer "prefecture", null: false
-    t.integer "category", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "category_id", null: false
     t.bigint "giver_id", null: false
     t.bigint "taker_id"
     t.datetime "created_at", null: false

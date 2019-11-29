@@ -1,0 +1,114 @@
+<main class="animal-main">
+  <div class="animal-images">
+    <div class="animal-images__image-left">
+      <%= image_tag "#{@animal.images[0].image_url}"%>
+    </div>
+    <% if @animal.images.length == 5%>
+      <div class="animal-images__image-right">
+        <div class="animal-images__image-right__top">
+          <div class="animal-images__image-right__top-left">
+            <%= image_tag "#{@animal.images[1].image_url}"%>
+          </div>
+          <div class="animal-images__image-right__top-right">
+            <%= image_tag "#{@animal.images[2].image_url}"%>
+          </div>
+        </div>
+        <div class="animal-images__image-right__bottom">
+          <div class="animal-images__image-right__bottom-left">
+            <%= image_tag "#{@animal.images[3].image_url}"%>
+          </div>
+          <div class="animal-images__image-right__bottom-right">
+            <%= image_tag "#{@animal.images[4].image_url}"%>
+          </div>
+        </div>
+      </div>
+    <% elsif @animal.images.length == 4 %>
+      <div class="animal-images__image-right">
+        <div class="animal-images__image-right__top">
+          <div class="animal-images__image-right__top-left">
+            <%= image_tag "#{@animal.images[1].image_url}"%>
+          </div>
+          <div class="animal-images__image-right__top-right">
+            <%= image_tag "#{@animal.images[2].image_url}"%>
+          </div>
+        </div>
+        <div class="animal-images__image-right__bottom">
+          <div class="animal-images__image-right__bottom-left">
+            <%= image_tag "#{@animal.images[3].image_url}"%>
+          </div>
+          <div class="animal-images__image-right__bottom-right">No Image</div>
+        </div>
+      </div>
+    <% elsif @animal.images.length == 3 %>
+      <div class="animal-images__image-right">
+        <div class="animal-images__image-right__top">
+          <div class="animal-images__image-right__top-left">
+            <%= image_tag "#{@animal.images[1].image_url}"%>
+          </div>
+          <div class="animal-images__image-right__top-right">
+            <%= image_tag "#{@animal.images[2].image_url}"%>
+          </div>
+        </div>
+        <div class="animal-images__image-right__bottom">
+          <div class="animal-images__image-right__bottom-left">No Image</div>
+          <div class="animal-images__image-right__bottom-right">No Image</div>
+        </div>
+      </div>
+    <% elsif @animal.images.length == 2 %>
+      <div class="animal-images__image-right">
+        <div class="animal-images__image-right__top">
+          <div class="animal-images__image-right__top-left">
+            <%= image_tag "#{@animal.images[1].image_url}"%>
+          </div>
+          <div class="animal-images__image-right__top-right">No Image</div>
+        </div>
+        <div class="animal-images__image-right__bottom">
+          <div class="animal-images__image-right__bottom-left">No Image</div>
+          <div class="animal-images__image-right__bottom-right">No Image</div>
+        </div>
+      </div>
+    <% elsif @animal.images.length == 1%>
+      <div class="animal-images__image-right">
+        <div class="animal-images__image-right__top">
+          <div class="animal-images__image-right__top-left">No Image</div>
+          <div class="animal-images__image-right__top-right">No Image</div>
+        </div>
+        <div class="animal-images__image-right__bottom">
+          <div class="animal-images__image-right__bottom-left">No Image</div>
+          <div class="animal-images__image-right__bottom-right">No Image</div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <div class="animal-functions">
+    <div class="animal-functions__top">
+      <div class="animal-information">
+        <div class="animal-information__header">
+          <div class="animal-information__header--name">
+            <%= @animal.name %>
+          </div>
+          <div class="animal-information__header--prefecture">
+            <%= @animal.prefecture.name %>
+          </div>
+        </div>
+        <div class="animal-information__main">
+          <h2>Description</h2>
+          <div class="animal-information__main--description">
+            <%= simple_format @animal.description %>
+          </div>
+        </div>
+      </div>
+      <div class="animal-transaction">
+        <div class="animal--chatspace">
+          
+        </div>
+      </div>
+    </div>
+    <div class="animal--navigation">
+      <%= link_to '#' do%>
+        <button>里親に応募する</button>
+      <% end %>
+    </div>
+  </div>
+</main>
+<%= render '/shared/footer'%>

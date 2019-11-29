@@ -1,5 +1,7 @@
 class AnimalsController < ApplicationController
+  before_action :set_params, only: [:show, :edit, :destroy]
   def index
+    @animals = Animal.all
   end
 
   def new
@@ -24,6 +26,7 @@ class AnimalsController < ApplicationController
   end
   
   def show
+
   end
 
   def edit
@@ -41,8 +44,12 @@ class AnimalsController < ApplicationController
       params.require(:animal).permit(
         :name,
         :description,
-        :category,
-        :prefecture,
+        :category_id,
+        :prefecture_id,
         images_attributes: [:image_url]).merge(giver_id: current_user.id)
+    end
+
+    def set_params
+      @animal = Animal.find(params[:id])
     end
 end

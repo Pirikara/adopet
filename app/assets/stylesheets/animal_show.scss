@@ -1,0 +1,172 @@
+//imageが5枚の時のレイアウト
+.animal-images{
+  display: flex;
+  &__image-left{
+    height: 500px;
+    width: 50%;
+    overflow: hidden;
+    border: 1px solid #efefef;
+    img{
+      height: 100%;
+      width: 100%;
+      display: block;
+      transition-duration: 0.3s;
+      &:hover{
+        transform: scale(1.1);
+        transition-duration: 0.3s;
+      }
+    }
+  }
+  &__image-right{
+    height: 500px;
+    width: 50%;
+    &__top{
+      display: flex;
+      width: 100%;
+      height: 50%;
+      &-left{
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+        line-height: 250px;
+        border: 1px solid #efefef;
+        font-weight: 600;
+        img{
+          width: 100%;
+          height: 100%;
+          display: block;
+          transition-duration: 0.3s;
+          &:hover{
+            transform: scale(1.1);
+            transition-duration: 0.3s;
+          }
+        }
+      }
+      &-right{
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        text-align: center;
+        line-height: 250px;
+        border: 1px solid #efefef;
+        font-weight: 600;
+        img{
+          width: 100%;
+          height: 100%;
+          display: block;
+          transition-duration: 0.3s;
+          &:hover{
+            transform: scale(1.1);
+            transition-duration: 0.3s;
+          }
+        }
+      }
+    }
+    &__bottom{
+      display: flex;
+      height: 50%;
+      width: 100%;
+      &-left{
+        overflow: hidden;
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        line-height: 250px;
+        border: 1px solid #efefef;
+        font-weight: 600;
+        img{
+          width: 100%;
+          height: 100%;
+          display: block;
+          transition-duration: 0.3s;
+          &:hover{
+            transform: scale(1.1);
+            transition-duration: 0.3s;
+          }
+        }
+      }
+      &-right{
+        overflow: hidden;
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        line-height: 250px;
+        border: 1px solid #efefef;
+        font-weight: 600;
+        img{
+          width: 100%;
+          height: 100%;
+          display: block;
+          transition-duration: 0.3s;
+          &:hover{
+            transform: scale(1.1);
+            transition-duration: 0.3s;
+          }
+        }
+      }
+    }
+  }
+}
+
+.animal-functions{
+  width: 1032px;
+  margin: 40px auto 0;
+}
+
+//募集動物の情報欄
+.animal-information{
+  width: 50%;
+  &__header{
+    &--name{
+      font-size: 30px;
+      font-weight: bold;
+    }
+    &--prefecture{
+      color: #484848;
+    }
+  }
+  &__main{
+    margin-top: 20px;
+    h2{
+      font-size: 20px;
+      border-bottom: 1px solid #484848;
+    }
+    &--description{
+      font-size: 14px;
+      margin-top: 20px;
+      border-bottom: 1px solid #484848;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+//右側機能
+.animal-transaction{
+  width: 50%;
+}
+
+//募集動物についての質問チャットスペース
+.animal--chatspace{
+  height: 50%;
+  border: 1px;
+}
+
+//募集動物についての応募ボタン
+.animal--navigation{
+  height: 50%;
+  a{
+    display: block;
+    text-align: center;
+    button{
+      margin: 20px 0;
+      height: 48px;
+      width: 100%;
+      font-size: 16px;
+      background-color: #3EC1C9;
+      border: 1px solid #3EC1C9;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}

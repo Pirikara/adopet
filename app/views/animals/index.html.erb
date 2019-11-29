@@ -1,0 +1,31 @@
+<main class="animals-main">
+  <div class="search_view">
+    <%= form_with(url: search_animals_path, local: true, method: :get, class: "search-form" ) do |f| %>
+      <%= f.collection_select :category, Category.all, :id, :name, include_blank: 'カテゴリを選択' %>
+      <%= f.collection_select :prefecture, Prefecture.all, :id, :name, include_blank: '都道府県を選択'%>
+      <%= f.text_field :keyword, placeholder: "投稿を検索する", class: "search-input"%>
+      <%= f.submit "検索", class: "search-btn"%>
+    <% end %>
+  </div>
+  <div class="animals__container">
+    <div class="animals__container__content">
+      <% @animals.each do |animal| %>
+        <%= link_to "animals/#{animal.id}", class: "animal-show__link" do%>
+          <div class="animal-show__link--image">
+            <%= image_tag "#{animal.images[0].image_url}", size: '240x160'%>
+            <div class="animal-show__link--image-prefecture">
+              <%= animal.prefecture.name %>
+            </div>
+          </div>
+          <div class="animal-show__link--name">
+            <%= animal.name%>
+          </div>
+          <div class="animal-show__link--username">
+            <%= animal.giver.name%>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</main>
+<%= render 'shared/footer'%>

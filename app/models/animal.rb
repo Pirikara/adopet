@@ -1,4 +1,5 @@
 class Animal < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   #validation
 
   #association
@@ -7,4 +8,6 @@ class Animal < ApplicationRecord
   has_many :users
   belongs_to :taker, class_name: 'User', optional: true
   belongs_to :giver, class_name: 'User'
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :category
 end
