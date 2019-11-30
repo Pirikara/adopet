@@ -26,7 +26,8 @@ class AnimalsController < ApplicationController
   end
   
   def show
-
+    @comment = Comment.new
+    @comments = @animal.comments.includes(:user)
   end
 
   def edit

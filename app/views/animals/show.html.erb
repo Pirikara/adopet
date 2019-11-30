@@ -105,7 +105,6 @@
           </div>
         </div>
         <div class="animal-information__main">
-          <h2>Description</h2>
           <div class="animal-information__main--description">
             <%= simple_format @animal.description %>
           </div>
@@ -113,7 +112,40 @@
       </div>
       <div class="animal-transaction">
         <div class="animal--chatspace">
-          
+          <% if @comments %>
+            <% @comments.each do |comment| %>
+              <div class="animal--chatspace__comments">
+                <div class="animal--chatspace__comments--user">
+                  <div class="animal--chatspace__comments--user--icon">
+                    <%= image_tag "#{comment.user.icon}" %>
+                  </div>
+                </div>
+                <div class="animal--chatspace__comments--comment">
+                  <div class="animal--chatspace__comments--comment--user">
+                    <%= comment.user.name%>
+                  </div>
+                  <div class="animal--chatspace__comments--comment--text">
+                    <%= comment.text %>
+                    <div class="animal--chatspace__comments--comment--text--time">
+                      <i class="far fa-clock"></i>
+                      <%= time_ago_in_words(comment.created_at) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+          <div class="animal--chatspace__form">
+            <div class="animal--chatspace__form--comment">
+              <p>気になることがあれば、コメントで聞いてみましょう</p>
+            </div>
+            <% if current_user %>
+              <%= form_with(model: [@animal, @comment], local: true, id: "new_comment") do |f| %>
+                <%= f.text_area :text, placeholder: "コメントする", class: "form__textbox" %>
+                <%= f.submit "Comment", class: "form__submit" %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -112,11 +112,15 @@
 .animal-functions{
   width: 1032px;
   margin: 40px auto 0;
+  &__top{
+    display: flex;
+  }
 }
 
 //募集動物の情報欄
 .animal-information{
   width: 50%;
+  padding: 10px;
   &__header{
     &--name{
       display: flex;
@@ -142,15 +146,10 @@
     }
   }
   &__main{
-    margin-top: 20px;
-    h2{
-      font-size: 20px;
-      border-bottom: 1px solid #484848;
-    }
+    margin-top: 40px;
     &--description{
       font-size: 14px;
       margin-top: 20px;
-      border-bottom: 1px solid #484848;
       padding-bottom: 20px;
     }
   }
@@ -159,12 +158,87 @@
 //右側機能
 .animal-transaction{
   width: 50%;
+  padding: 10px;
 }
 
 //募集動物についての質問チャットスペース
+//チャット一覧
+.animal--chatspace__comments{
+  margin-bottom: 20px;
+  display: flex;
+  &--user{
+    width: 50px;
+    &--icon{
+      img{
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+  &--comment{
+    width: 100%;
+    &--user{
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    &--text{
+      margin-left: 20px;
+      box-sizing: border-box;
+      display: inline-block;
+      position: relative;
+      padding: 16px;
+      width: calc(100% - 20px);
+      border-radius: 15px;
+      background: #eef0f4;
+      &:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 3px; 
+        left: -19px;
+        border: 8px solid transparent;
+        border-right: 18px solid #edf1ee;
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
+      }
+      &--time{
+        margin-top: 10px;
+        font-size: 12px;
+        color: #aaa;
+      }
+    }
+  }
+}
+//投稿欄
 .animal--chatspace{
-  height: 50%;
-  border: 1px;
+  padding: 15px;
+  &__form{
+    &--comment{
+      font-size: 13px;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      background-color: #fff6de;
+      color: #484848;
+    }
+    form{
+      .form__textbox{
+        width: calc(100% - 2px);
+        height: 100px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .form__submit{
+        height: 48px;
+        width: 100%;
+        background-color: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+      }
+    }
+  }
 }
 
 //募集動物についての応募ボタン
@@ -175,7 +249,7 @@
     text-align: center;
     button{
       margin: 20px 0;
-      height: 48px;
+      height: 56px;
       width: 100%;
       font-size: 16px;
       background-color: #3EC1C9;
