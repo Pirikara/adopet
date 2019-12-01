@@ -16,7 +16,7 @@
       </a>    
       <ul class="header--lists">
         <li class="header--lists--list">
-          <%= link_to "#{current_user.name}", "users/#{current_user.id}" %>
+          <%= link_to "#{current_user.name}", user_path(id: current_user.id) %>
         </li>
         <li class="header--lists--list">HELP</li>
         <li class="header--lists--list">

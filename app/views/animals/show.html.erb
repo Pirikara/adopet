@@ -150,8 +150,12 @@
       </div>
     </div>
     <div class="animal--navigation">
-      <%= link_to '#' do%>
-        <button>里親に応募する</button>
+      <% if @animal.giver_id == current_user.id %>
+        <button class="animal_giver">自分が募集した動物の里親になることはできません</button>
+      <% else %>
+        <%= link_to animal_rooms_path(animal_id: @animal.id ,room: {animal_id: @animal.id, user_ids: [@animal.giver_id, current_user.id]}), method: :post do%>
+          <button class="animal_taker">里親に応募する</button>
+        <% end %>
       <% end %>
     </div>
   </div>

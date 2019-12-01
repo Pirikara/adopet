@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :users
   resources :animals do
     resources :comments, only: :create
+    resources :rooms do
+      resources :messages, only: :create
+    end
+
     collection do
       get 'search'
     end
