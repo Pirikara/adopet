@@ -1,0 +1,124 @@
+<main>
+  <div class="room-wrapper">
+    <div class="animal-informations">
+      <div class="animal-informations__image">
+        <%= image_tag "#{@animal.images[0].image_url}" %>
+      </div>
+      <div class="animal-informations__content">
+        <div class="animal-informations__content--name">
+          <%= @animal.name%>
+          <% if @animal.gender.id == 1 %>
+            <div class="animal-informations__content--name--male">
+              <i class="fas fa-mars"></i>
+            </div>
+          <% elsif @animal.gender.id == 2 %>
+            <div class="animal-informations__content--name--female">
+              <i class="fas fa-venus"></i>
+            </div>
+          <% else %>
+            <div class="animal-informations__content--name--unknown">
+              性別不明
+            </div>
+          <% end %>
+        </div>
+        <div class="animal-informations__content--prefecture">
+          <%= @animal.prefecture.name %>
+        </div>
+      </div>
+    </div>
+    <div class="counterparty-information">
+      <div class="counterparty-information__personal">
+        <% if @room.users[0].id == current_user.id %>
+          <div class="counterparty-information__personal--icon">
+            <%= image_tag "#{@room.users[1].icon}" %>
+          </div>
+          <div class="counterparty-information__personal--name">
+            <%= @room.users[1].name%>
+          </div>
+        <% else %>
+          <div class="counterparty-information__personal--icon">
+            <%= image_tag "#{@room.users[0].icon}" %>
+          </div>
+          <div class="counterparty-information__personal--name">
+            <%= @room.users[0].name%>
+          </div>
+        <% end %>
+      </div>
+      <div class="counterparty-information__prefecture">
+      </div>
+      <% if @animal.giver_id == current_user.id %>
+        <div class="counterparty-information__judge">
+          <div class="counterparty-information__judge--yes">
+            <button>
+              <i class="far fa-handshake"></i>
+              <p>里親成立</p>
+            </button>
+          </div>
+          <div class="counterparty-information__judge--no">
+            <button>
+              <i class="fa fa-heartbeat"></i>
+              <p>里親不成立</p>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="private-chat">
+      <% if @messages %>
+        <% @messages.each do |message| %>
+          <% if message.user == current_user %>
+            <div class="private-chat__comments">
+              <div class="private-chat__comments__mycomment">
+                <div class="private-chat__comments__mycomment--mine">
+                  <%= message.user.name %>
+                </div>
+                <div class="private-chat__comments__mycomment--mycontent">
+                  <%= message.content %>
+                  <div class="private-chat__comments__mycomment--mycontent--time">
+                    <i class="far fa-clock"></i>
+                    <%= time_ago_in_words(message.created_at) %>
+                  </div>
+                </div>
+              </div>
+              <div class="private-chat__comments__user">
+                <div class="private-chat__comments__user--icon">
+                  <%= image_tag "#{message.user.icon}" %>
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <div class="private-chat__comments">
+              <div class="private-chat__comments__user">
+                <div class="private-chat__comments__user--icon">
+                  <%= image_tag "#{message.user.icon}" %>
+                </div>
+              </div>
+              <div class="private-chat__comments__comment">
+                <div class="private-chat__comments__comment--user">
+                  <%= message.user.name %>
+                </div>
+                <div class="private-chat__comments__comment--content">
+                  <%= message.content %>
+                  <div class="private-chat__comments__comment--content--time">
+                    <i class="far fa-clock"></i>
+                    <%= time_ago_in_words(message.created_at) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div class="private-chat__form">
+        <div class="private-chat__form--comment">
+          <p>お相手と引き渡し条件やその他事項について話しましょう</p>
+        </div>
+        <%= form_with(model: [@animal, @room, @message], local: true, id: "new_message") do |f| %>
+          <%= f.text_area :content, placeholder: "メッセージを送る", class: "form__textbox"%>
+          <%= f.submit "送信", class: "form__submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+<%= render 'shared/footer'%>

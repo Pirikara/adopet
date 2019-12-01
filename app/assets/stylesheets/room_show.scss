@@ -1,0 +1,223 @@
+.room-wrapper{
+  width: 800px;
+  margin: 40px auto 0;
+}
+
+//チャット対象の動物欄
+.animal-informations{
+  display: flex;
+  border-bottom: 1px solid #efefef;
+  padding: 10px 0;
+  &__image{
+    img{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+  }
+  &__content{
+    padding: 16px;
+    &--name{
+      display: flex;
+      font-size: 25px;
+      font-weight: bold;
+      &--male{
+        margin-left: 10px;
+        color: blue;
+      }
+      &--female{
+        margin-left: 10px;
+        color: red;
+      }
+      &--unknown{
+        margin-left: 10px;
+        color: #aaa;
+        font-size: 15px;
+        line-height: 45px;
+      }
+    }
+  }
+}
+
+//取引相手欄
+.counterparty-information{
+  border-bottom: 1px solid #efefef;
+  padding: 20px 0;
+  &__personal{
+    text-align: center;
+    &--icon{
+      padding-top: 16px;
+      img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+    }
+    &--name{
+      font-size: 25px;
+      font-weight: bold;
+      padding: 16px;
+    }
+  }
+}
+
+//ジャッジボタン
+.counterparty-information__judge{
+  display: flex;
+  justify-content: center;
+  &--yes{
+    margin-right: 30px;
+    button{
+      font-size: 16px;
+      color:  #3EC1C9;
+      height: 100px;
+      width: 200px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: #fff;
+    }
+  }
+  &--no{
+    button{
+      font-size: 16px;
+      color: #484848;
+      height: 100px;
+      width: 200px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: #fff;
+    }
+  }
+}
+
+//募集動物についての質問チャットスペース
+//自分チャット一覧
+.private-chat__comments{
+  margin-bottom: 20px;
+  display: flex;
+  &__mycomment{
+    width: 100%;
+    text-align: right;
+    &--mine{
+      text-align: right;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    &--mycontent{
+      text-align: right;
+      margin-right: 20px;
+      box-sizing: border-box;
+      display: inline-block;
+      position: relative;
+      padding: 16px;
+      width: calc(100% - 86px);
+      border-radius: 15px;
+      background: #eef0f4;
+      &:after{
+        content: "";
+        position: absolute;
+        top: 3px; 
+        right: -19px;
+        border: 8px solid transparent;
+        border-left: 18px solid #edf1ee;
+        -webkit-transform: rotate(-35deg);
+        transform: rotate(-35deg);
+      }
+      &--time{
+        margin-top: 10px;
+        font-size: 12px;
+        color: #aaa;
+      }
+    }
+  }
+  &__user{
+    width: 50px;
+    &--icon{
+      img{
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+//相手チャット一覧
+.private-chat__comments{
+  margin-bottom: 20px;
+  display: flex;
+  &__user{
+    width: 50px;
+    &--icon{
+      img{
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+  }
+  &__comment{
+    width: 100%;
+    &--user{
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    &--content{
+      margin-left: 20px;
+      box-sizing: border-box;
+      display: inline-block;
+      position: relative;
+      padding: 16px;
+      width: calc(100% - 86px);
+      border-radius: 15px;
+      background: #eef0f4;
+      &:after{
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 3px; 
+        left: -19px;
+        border: 8px solid transparent;
+        border-right: 18px solid #edf1ee;
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
+      }
+      &--time{
+        margin-top: 10px;
+        font-size: 12px;
+        color: #aaa;
+      }
+    }
+  }
+}
+
+//投稿欄
+.private-chat{
+  padding: 15px;
+  margin: 20px 0;
+  &__form{
+    &--comment{
+      font-size: 13px;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      background-color: #fff6de;
+      color: #484848;
+    }
+    form{
+      .form__textbox{
+        width: calc(100% - 2px);
+        height: 100px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      .form__submit{
+        height: 48px;
+        width: 100%;
+        background-color: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+      }
+    }
+  }
+}

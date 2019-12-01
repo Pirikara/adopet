@@ -1,4 +1,14 @@
 <div>
   <%= link_to "DELETE ACCOUNT", user_registration_path, method: :delete %>
   <%= image_tag "#{@user.icon}" %>
+
+  <% @rooms.each do |room| %>
+    <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id) do%>
+      <% if current_user.name == room.users[0].name %>
+        <%= room.users[1].name %>
+      <% else %>
+        <%= room.users[0].name %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>

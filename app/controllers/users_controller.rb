@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
+    @rooms = @user.rooms
   end
 
   def edit
