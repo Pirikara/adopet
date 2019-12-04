@@ -1,17 +1,4 @@
-<main class="user-show__main">
-  <section class="profile">
-    <div class="user-detail">
-      <div class="user-detail__box">
-        <div class="user-detail__box--photo">
-          <%= image_tag "#{@user.icon}" %>
-        </div>
-        <div class="user-detail__box--name">
-          <%= @user.name %>
-        </div>
-      </div>
-    </div>
-    <div class="user-messages">
-       <div class="user-messages__box">
+      <div class="user-messages__box">
         <% if current_user.id == @user.id %>
           <p>里親募集中の子達</p>
           <div class="giving-animals">
@@ -45,19 +32,3 @@
           </div>
         <% end %>
       </div>
-    </div>
-    <div class="account-btns">
-      <div class="account-btns__edit">
-        <%= link_to "#" do%>
-          <button>EDIT ACCOUNT</button>
-        <% end %>
-      </div>
-      <div class="account-btns__delete">
-        <%= link_to user_registration_path, method: :delete do%>
-          <button>DELETE ACCOUNT</button>
-        <% end %>
-      </div>
-    </div>
-  </section>
-</main>
-<%= render "shared/footer"%>
