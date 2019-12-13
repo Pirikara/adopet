@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @rooms = @user.rooms
+    @animals = Animal.where(giver_id: @user.id)
   end
 
   def edit
