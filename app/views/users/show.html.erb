@@ -10,40 +10,105 @@
         </div>
       </div>
     </div>
-    <div class="user-messages">
-       <div class="user-messages__box">
-        <% if current_user.id == @user.id %>
-          <p>里親募集中の子達</p>
-          <div class="giving-animals">
+    <div class="user-description">
+      <p>よろしくお願いします</p>
+    </div>
+    <div class="user-recruitment-animals">
+      <div class="user-recuruitment-animals__box">
+        <ul class="tab-group">
+          <li class="tab is-active">里親募集中の子達</li>
+          <li class="tab">募集取引メッセージ</li>
+        </ul>
+        <!--里親募集中タグの中身-->
+        <ul class="tab-contents">
+          <li class="giving-animals is-show">
             <% @animals.each do |animal| %>
-              <div class="giving-animals__animal">
-                <div class="giving-animals__animal--photo">
-                  <%= image_tag "#{animal.images[0].image_url}" %>
+              <%= link_to animal_path(animal.id), class: "giving-animals--link" do %>
+                <div class="giving-animals--link__animal">
+                  <div class="giving-animals--link__animal--photo">
+                    <%= image_tag "#{animal.images[0].image_url}" %>
+                  </div>
+                  <div class="giving-animals--link__animal--content">
+                    <div class="giving-animals--link__animal--content--name">
+                      <%= animal.name %>
+                    </div>
+                    <% if animal.gender.id == 1 %>
+                    <div class="giving-animals--link__animal--content--male">
+                      <i class="fas fa-mars"></i>
+                    </div>
+                    <% elsif animal.gender.id == 2%>
+                    <div class="giving-animals--link__animal--content--female">
+                      <i class="fas fa-venus"></i>
+                    </div>
+                    <% else %>
+                    <div class="giving-animals--link__animal--content--unknown">
+                      <%= animal.gender.name%>
+                    </div>
+                    <% end %>
+                  </div>
                 </div>
-                <div class="giving-animals__animal--name">
-                  <%= animal.name %>
-                </div>
-              </div>
-              <div class="giving-animals__chatrooms">
-                <div class="giving-animals__chatrooms--names">
-                  <% @rooms.where(animal_id: animal.id).each do |room| %>
-                    <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id) do%>
-                      <% if current_user.name == room.users[0].name %>
-                        <div class="giving-animals__chatrooms--names--name">
-                          <%= room.users[1].name %>
+              <% end %>
+            <%end%>
+          </li>
+          <!--取引メッセージ有り-->
+          <li class="giving-animals">
+            <% if current_user.id == @user.id %>
+              <div class="giving-animals__messages ">
+                <% @rooms.each do |room| %>
+                  <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id), class: "giving-animals__messages__link" do%>
+                    <% if current_user.id == room.users[0].id %>
+                      <div class="giving-animals__messages__link--message">
+                        <div class="giving-animals__messages__link--message--from">
+                          <div class="giving-animals__messages__link--message--from--icon">
+                            <%= image_tag "#{room.users[1].icon}" %>
+                          </div>
+                          <div class="giving-animals__messages__link--message--from--name">
+                            <%= room.users[1].name %>
+                          </div>
                         </div>
-                      <% else %>
-                        <div class="giving-animals__chatrooms--names--name">
-                          <%= room.users[0].name %>
+                        <div class="giving-animals__messages__link--message--content">
+                          <% if Message.new_message(room.id) %>
+                            <div class="giving-animals__messages__link--message--content__new">
+                              <%= Message.new_message(room.id).content %>
+                            </div>
+                            <div class="giving-animals__messages__link--message--content__time">
+                              <%= time_ago_in_words(Message.new_message(room.id).created_at)%>
+                            </div>
+                          <%else%>
+                            <p>まだメッセージのやり取りは有りません</p>
+                          <% end %>
                         </div>
-                      <% end %>
+                      </div>
+                    <% else %>
+                      <div class="giving-animals__messages__link--message">
+                        <div class="giving-animals__messages__link--message--from">
+                          <div class="giving-animals__messages__link--message--from--icon">
+                            <%= image_tag "#{room.users[0].icon}" %>
+                          </div>
+                          <div class="giving-animals__messages__link--message--from--name">
+                            <%= room.users[0].name %>
+                          </div>
+                        </div>
+                        <div class="giving-animals__messages__link--message--content">
+                          <% if Message.new_message(room.id) %>
+                            <div class="giving-animals__messages__link--message--content__new">
+                              <%= Message.new_message(room.id).content %>
+                            </div>
+                            <div class="giving-animals__messages__link--message--content__time">
+                              <%= time_ago_in_words(Message.new_message(room.id).created_at)%>
+                            </div>
+                          <%else%>
+                            <p>まだメッセージのやり取りは有りません</p>
+                          <% end %>
+                        </div>
+                      </div>
                     <% end %>
                   <% end %>
-                </div>
+                <% end %>
               </div>
-            <%end%>
-          </div>
-        <% end %>
+            <% end %>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="account-btns">
