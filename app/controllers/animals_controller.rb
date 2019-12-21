@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :destroy]
+  before_action :set_params, only: [:show, :edit, :update, :destroy]
   def index
     @animals = Animal.all
   end
@@ -16,12 +16,10 @@ class AnimalsController < ApplicationController
   def create
     @animal = Animal.new(animal_params)
     if @animal.save
-      params[:images][:image_url].each do |image|
-        @animal.images.create!(image_url: image, animal_id: @animal.id)
-      end
       redirect_to root_path
     else
-      redirect_to new_animal_path
+      @animal.images.build
+      render :new
     end
   end
   
@@ -37,6 +35,13 @@ class AnimalsController < ApplicationController
   end
 
   def destroy
+    if @animal.destroy
+      redirect_to animals_path
+    else
+      redirect_to animal_path(@animal.id)
+      :javascript
+        alert('削除できませんでした。');
+    end
   end
 
   private

@@ -1,6 +1,12 @@
 class Animal < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   #validation
+  validates :name,
+            :description,
+            :category_id,
+            :prefecture_id,
+            :gender_id,
+            presence: true
 
   #association
   has_many :images, dependent: :destroy

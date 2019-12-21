@@ -10,18 +10,15 @@
             <span class="form-require">必須</span>
           </h3>
           <p>最大5枚までアップロードできます</p>
-          <div class="animal-form__container clearfix">
-            <div class="animal-form__container__preview-area">
-              <div class="animal-form__container__preview-area__images">
-                <ul></ul>
-              </div>
-            </div>
-            <div class="animal-form__container__drop-area">
+          <div id="image-box-1">
+            <div class="item-num-0" id="image-box__container">
               <%= f.fields_for :images do |i| %>
-                <%= i.label :image_url, class: "animal-form__container__drop-area__label" do %>
-                  <%= i.file_field :image_url, class: "animal-form__container__drop-area__label__file", multiple: true, name: "images[image_url][]", style: "display: none;" %>                 
-                  <i class="fas fa-camera"></i>
-                <% end %>
+                <div class="input-area">
+                  <%= i.file_field :image, name:"animal[images_attributes][][image_url]", type: "file", multiple:true, value:"", style: "display:none", id:"img-file" %>
+                  <label for="img-file">
+                    <i class="fas fa-camera"></i>
+                  </label>
+                </div>
               <% end %>
             </div>
           </div>
