@@ -1,121 +1,122 @@
 $(function(){
+  var inputs = []
+  var list = new DataTransfer();
+  var dropZone = document.getElementById("image-box-1");
+  var doc = document.querySelector('input[type=file]')
 
-  function buildImage(loadedImageUrl){
-    let counter = 0
-    $('.iu-preview-box__text__delete').each(function(){
-      counter++;
-    });
-    let html =
-    `<li class="iu-preview-box">
-      <figure class="iu-preview-box__image">
-        <img src=${loadedImageUrl}>
-      </figure>
-      <div class="iu-preview-box__text">
-        <a class="iu-preview-box__text__delete" data-id="${counter}">
-          削除
-        </a>
-      </div>
-    </li>`
-    return html
-  };
-
-  //画像が5枚アップロードされたらドロップエリアを消す
-  function hideDropArea(){
-    if (images_array.length >= 5){
-      $(DropArea1).css({
-        'display' : 'none'
-      })
-    }
-    else{
-      $(DropArea1).css({
-        'display' : 'block'
-      })
-    }
-  }
-  
-  let DropArea1 = '.animal-form__container__drop-area'
-  let PreviewArea = '.animal-form__container__preview-area__images ul'
-  let images_array = []
-
-  //ドロップダウン投稿機能
-  $(DropArea1).on({'dragenter dragover' :function(e){
-    e.preventDefault();
-    },
-    'drop' :function(e){
+  //loadイベント発生時に発火するイベントを定義
+  window.onload = function(e){
+    //ドラッグした要素がドロップターゲットの上にある時にイベントが発火
+    dropZone.addEventListener("dragover", function(e) {
+      //DOMにイベントがたまるのを阻止
+      e.stopPropagation();
+      //デフォルトイベントをキャンセル
       e.preventDefault();
-      let images = e.originalEvent.dataTransfer.files;
-      for (let i = 0; i < images.length; i++){
-        images_array.push(images[i]);
-        let fileReader = new FileReader();
-        //読み込みが成功した時にfunctionを起動
-        fileReader.onload = function(e){
-          //画像のURLを取得
-          let loadedImageUrl = e.target.result
-          //HTMLに画像を放り込む
-          $(buildImage(loadedImageUrl)).appendTo(PreviewArea).trigger('create')
-          $('.iu-preview-box__text__delete').each(function(a){
-            a = a + 1;
-            var have_image = `have-image-${a}`
-            var had_image = `have-image-${a - 1}`
-            if($(DropArea1).hasClass(had_image)){
-              $(DropArea1).removeClass(had_image);
-              $(DropArea1).addClass(have_image);
-            }else{
-              $(DropArea1).addClass(have_image);
-            };
-          });
+      //image-box__containerのCSSを変更
+      $(this).children('#image-box__container').css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
+    }, false);
+    //ドラッグした要素がドロップターゲットから離れた時に発火するイベント
+    dropZone.addEventListener("dragleave", function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'})
+    }, false);
+    //ドラッグした要素をドロップした時に発火するイベント
+    dropZone.addEventListener("drop", function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      $(this).children('#image-box__container').css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'});
+      //dataTransferで、ドラッグアンドドロップした時にdataTransferオブジェクトを取得
+      var files = e.dataTransfer.files;
+      //ドラッグアンドドロップで取得したデータについて、プレビューを表示
+      $.each(files, function(i,file){
+        //アップロードされた画像を元に新しくfilereaderオブジェクトを生成
+        var fr = new FileReader();
+        //dataTransferオブジェクトに値を追加
+        list.items.add(file)
+        doc.files = list.files
+        //lengthで要素の数を取得
+        var num = $('.item-image').length + i + 1
+        //指定されたファイルを読み込む
+        fr.readAsDataURL(file);
+        // 10枚プレビューを出したらドロップボックスが消える
+        if (num==10){
+          $('#image-box__container').css('display', 'none')   
+        }
+        //image fileがロードされた時に発火するイベント
+        fr.onload = function() {
+          //変数srcにresultで取得したfileの内容を代入
+          var src = fr.result
+          var html =`<div class='item-image' data-image="${file.name}">
+                      <div class=' item-image__content'>
+                        <div class='item-image__content--icon'>
+                          <img src=${src} width="114" height="80" >
+                        </div>
+                      </div>
+                      <div class='item-image__operetion'>
+                        <div class='item-image__operetion--delete'>削除</div>
+                      </div>
+                    </div>`
+        //image-box__containerの前にhtmlオブジェクトを追加　
+        $('#image-box__container').before(html);
+        //配列にhtmlオブジェクトを追加する
+        inputs.push(html)
         };
-        //画像ファイルの読み込みを行う
-        fileReader.readAsDataURL(images[i])
-      }
-      hideDropArea();
-    },  
-  });
-
-  //クリック投稿機能
-  $(DropArea1).on('change', 'input[type="file"]', function(e){
-    e.preventDefault();
-    let images = $(this).prop('files')
-      for (let i = 0; i < images.length; i++){
-        images_array.push(images[i]);
-        let fileReader = new FileReader();
-        fileReader.onload = function(e){
-          var loadedImageUrl = e.target.result
-          $(buildImage(loadedImageUrl)).appendTo(PreviewArea).trigger('create')
-          $('.iu-preview-box__text__delete').each(function(a){
-            a = a + 1;
-            var have_image = `have-image-${a}`
-            var had_image = `have-image-${a - 1}`
-            if($(DropArea1).hasClass(had_image)){
-              $(DropArea1).removeClass(had_image);
-              $(DropArea1).addClass(have_image);
-            }else{
-              $(DropArea1).addClass(have_image);
-            };
-          });
+        //image-box__containerにitem-num-(変数)という名前のクラスを追加する
+        $('#image-box__container').attr('class', `item-num-${num}`)
+      })
+    },false);
+    //file_fieldが変化した時（image fileがアップロードされた時）
+    $(document).on('change','input[type=file]',function(e){
+      //file_fieldからfiles属性を取得
+      var files = $(this).prop('files')[0];
+      $.each(this.files, function(i,file){
+        var fr = new FileReader();
+        list.items.add(file)
+        doc.files = list.files
+        var num = $('.item-image').length + 1 + i
+        fr.readAsDataURL(file);
+        if (num == 10){
+          $('#image-box__container').css('display', 'none')   
+        }
+        fr.onload = function() {
+          var src = fr.result
+          var html =`<div class='item-image' data-image="${file.name}">
+                      <div class=' item-image__content'>
+                        <div class='item-image__content--icon'>
+                          <img src=${src} width="114" height="80" >
+                        </div>
+                      </div>
+                      <div class='item-image__operetion'>
+                        <div class='item-image__operetion--delete'>削除</div>
+                      </div>
+                    </div>`
+        $('#image-box__container').before(html);
+        inputs.push(html)
         };
-        fileReader.readAsDataURL(images[i])
+        $('#image-box__container').attr('class', `item-num-${num}`)
+      })
+    })
+    //削除ボタンを押した時に発火するイベント
+    $(document).on('click', '.item-image__operetion--delete', function(e) {
+      var target_image = $(this).parent().parent()
+      var input = doc.files
+      var target_name = $(target_image).data('image');
+      if (doc.files.length==1){
+        $('input[type=file]').val(null)
+        list.clearData()
+      }  else {
+      $.each(input, function(i,inp){
+      if (inp.name==target_name){
+        list.items.remove(i)
       }
-    hideDropArea();
-  })
-
-  //プレビュー画像の削除機能
-  //動的に追加された要素に対しては、documentを指定して一旦全ページを読み込ませる
-  $(document).on('click', '.iu-preview-box__text__delete', function(e){
-    e.preventDefault();
-    //clickした要素のdata-idを取得
-    let index = $(this).data('id');
-    //clickした要素のliがulのなかで何番目かを取得
-    let array_number = $(this).parent().parent().index();
-    //削除ボタンの親の親(li)を削除する
-    $(`a[data-id='${index}']`).parent().parent().remove();
-    //spliceメソッドで画像配列の中からarray_number番目の画像を1つ削除する
-    images_array.splice(array_number, 1);
-    let list_count = $('li').length - 3
-    let have_preview = `have-image-${list_count}`
-    let had_preview = `have-image-${list_count + 1}`
-    $(DropArea1).removeClass(had_preview)
-    $(DropArea1).addClass(have_preview)
-    hideDropArea();
-  });
-});
+      })
+        doc.files = list.files
+      }
+      target_image.remove()
+      var num = $('.item-image').length
+      $('#image-box__container').show()
+      $('#image-box__container').attr('class', `item-num-${num}`)
+    })
+  }
+})
