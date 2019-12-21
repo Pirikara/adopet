@@ -152,6 +152,14 @@
     <div class="animal--navigation">
       <% if @animal.giver_id == current_user.id %>
         <button class="animal_giver">自分が募集した動物の里親になることはできません</button>
+        <div class="giver__buttons">
+          <%= link_to edit_animal_path(@animal.id), class: "giver__buttons--edit" do%>
+            <button>投稿を編集する</button>
+          <% end %>
+          <%= link_to animal_path(@animal.id),class:"giver__buttons--delete", method: :delete do%>
+            <button>投稿を削除する</button>
+          <% end %>
+        </div>
       <% else %>
         <%= link_to animal_rooms_path(animal_id: @animal.id ,room: {animal_id: @animal.id, user_ids: [@animal.giver_id, current_user.id]}), method: :post do%>
           <button class="animal_taker">里親に応募する</button>

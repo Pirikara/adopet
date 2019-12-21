@@ -269,3 +269,33 @@
     cursor: pointer;
   }
 }
+
+//削除と編集ボタン
+.giver__buttons{
+  display: flex;
+  margin: 20px 0;
+  &--edit{
+    width: 50%;
+    margin: 0 20px 0 0;
+    button{
+      background-color: #3EC1C9;
+      color: #fff;
+      font-size: 16px;
+      height: 56px;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+  &--delete{
+    width: 50%;
+    margin: 0 0 0 20px;
+    button{
+      background-color: #AAAAAA;
+      color: #fff;
+      font-size: 16px;
+      height: 56px;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
