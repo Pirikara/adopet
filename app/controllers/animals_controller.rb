@@ -44,6 +44,10 @@ class AnimalsController < ApplicationController
     end
   end
 
+
+  def done
+  end
+
   private
 
     def animal_params
