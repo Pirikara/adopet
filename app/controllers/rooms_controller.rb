@@ -29,7 +29,7 @@ class RoomsController < ApplicationController
     @animal = Animal.find(params[:animal_id])
     @room = Room.find(params[:room_id])
     if @animal.update(taker_id: @room.users[1].id)
-      redirect_to animal_room_done_path(animal_id: @animal.id, room_id: @room.id)
+      redirect_to user_path(@room.users[0].id)
     else
       redirect_to animals_path
     end
