@@ -49,10 +49,12 @@
       <% if @animal.giver_id == current_user.id %>
         <div class="counterparty-information__judge">
           <div class="counterparty-information__judge--yes">
-            <button>
-              <i class="far fa-handshake"></i>
-              <p>里親成立</p>
-            </button>
+            <%= link_to animal_room_transaction_path(animal_id: @animal.id, room_id: @room.id) do%>
+              <button>
+                <i class="far fa-handshake"></i>
+                <p>里親成立</p>
+              </button>
+            <% end %>
           </div>
           <div class="counterparty-information__judge--no">
             <button>

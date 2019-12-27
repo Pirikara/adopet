@@ -20,8 +20,22 @@ class RoomsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:animal_id])
+    @room = Room.find(params[:id])
     @message = Message.new
     @messages = @room.messages.includes(:user)
+  end
+
+  def transaction
+    @animal = Animal.find(params[:animal_id])
+    @room = Room.find(params[:room_id])
+    if @animal.update(taker_id: @room.users[1].id)
+      redirect_to animal_room_done_path(animal_id: @animal.id, room_id: @room.id)
+    else
+      redirect_to animals_path
+    end
+  end
+
+  def done
   end
 
   private
