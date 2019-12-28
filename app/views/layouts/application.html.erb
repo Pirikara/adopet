@@ -48,12 +48,12 @@
           <h1 class="top-content__search-form--box--title">新しい家族を探しましょう</h1>
         </div>
         <div class="top-content__search-form--box--main">      
-          <form>
+          <%= form_with(scope: :search, url: search_animals_path, local: true, method: :get) do |f| %>
             <div class="top-content__search-form--box--main--field">
               <label for="area" class="top-content__search-form--box--main--field--label">
                 <div class="top-content__search-form--box--main--field--label--area">エリア</div>
                 <div class="">
-                  <input type="text" id="area" placeholder="エリアを入力してください">
+                  <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: "エリアを選択してください" %>
                 </div>
               </label>
             </div>
@@ -61,14 +61,12 @@
               <label for="category" class="top-content__search-form--box--main--field--label">
                 <div class="top-content__search-form--box--main--field--label--category">カテゴリ</div>
                 <div>
-                  <input type="text" id="category" placeholder="カテゴリを選んでください">
+                  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "カテゴリを選んでください" %>
                 </div>
               </label>
             </div>
             <div class="top-content__search-form--box--main--field--submit">
-              <button type="submit" class="top-content__search-form--box--main--field--submit-btn">
-                <span>search</span>
-              </button>
+              <%= f.submit "search", class: "top-content__search-form--box--main--field--submit-btn" %>
               or
               <div class="nav__link">
                 <%= link_to animals_path do%>
@@ -76,7 +74,7 @@
                 <% end %>
               </div>
             </div>
-          </form>
+          <% end %>
         </div>
       </div>
     </div>

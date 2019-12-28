@@ -44,8 +44,8 @@ class AnimalsController < ApplicationController
     end
   end
 
-
-  def done
+  def search
+    @animals = Animal.search(search_params)
   end
 
   private
@@ -62,5 +62,9 @@ class AnimalsController < ApplicationController
 
     def set_params
       @animal = Animal.find(params[:id])
+    end
+
+    def search_params
+      params.fetch(:search, {}).permit(:name, :prefecture_id, :category_id)
     end
 end

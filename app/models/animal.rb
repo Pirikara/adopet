@@ -19,4 +19,31 @@ class Animal < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :category
   belongs_to_active_hash :gender
+
+  #method
+  def self.search(search)
+    return Animal.all unless search
+    #いけてる
+    if search[:name] == "" && search[:prefecture_id] != "" && search[:category_id] != ""
+      Animal.where("(prefecture_id = ?) AND (category_id = ?)", search[:prefecture_id], search[:category_id])
+    #いけてない
+    elsif  search[:name] == "" && search[:prefecture_id] == "" && search[:category_id] != ""
+      Animal.where(category_id: search[:category_id])
+    #いけてない
+    elsif search[:name] == "" && search[:prefecture_id] != "" && search[:category_id] == ""
+      Animal.where(prefecture_id: search[:prefecture_id])
+    #いけてる
+    elsif search[:name] != "" && search[:prefecture_id] != "" && search[:category_id] != ""
+      Animal.where("(name LIKE(?)) AND (prefecture_id = ?) AND (category_id = ?)", "%#{search[:name]}%",search[:prefecture_id], search[:category_id])
+    #いけてる
+    elsif search[:name] != "" && search[:prefecture_id] != "" && search[:category_id] == ""
+      Animal.where("(name LIKE(?)) AND (prefecture_id = ?)", "%#{search[:name]}%", search[:prefecture_id])
+    #いけてる
+    elsif search[:name] != "" && search[:prefecture_id] == "" && search[:category_id] != ""
+      Animal.where("(name LIKE(?)) AND (category_id = ?)", "%#{search[:name]}%", search[:category_id])
+    #いけてる
+    elsif search[:name] != "" && search[:prefecture_id] == "" && search[:category_id] == ""
+      Animal.where("name LIKE(?)", "%#{search[:name]}%")
+    end
+  end
 end

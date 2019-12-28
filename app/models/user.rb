@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :gived_animals, -> { where("taker_id is not NULL") }, foreign_key: "giver_id", class_name: "Animal"
   mount_uploader :icon, ImageUploader
   mount_uploader :header_image, ImageUploader
+  
   def remember_me
     true
   end
