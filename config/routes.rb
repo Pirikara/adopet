@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     resources :rooms do
       get :transaction
+      get :unsuccessful
       resources :messages, only: :create
     end
 
