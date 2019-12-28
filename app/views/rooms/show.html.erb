@@ -28,19 +28,19 @@
     </div>
     <div class="counterparty-information">
       <div class="counterparty-information__personal">
-        <% if @room.users[0].id == current_user.id %>
+        <% if @host.id == current_user.id %>
           <div class="counterparty-information__personal--icon">
-            <%= image_tag "#{@room.users[1].icon}" %>
+            <%= image_tag "#{@client.icon}" %>
           </div>
           <div class="counterparty-information__personal--name">
-            <%= @room.users[1].name%>
+            <%= @client.name%>
           </div>
         <% else %>
           <div class="counterparty-information__personal--icon">
-            <%= image_tag "#{@room.users[0].icon}" %>
+            <%= image_tag "#{@host.icon}" %>
           </div>
           <div class="counterparty-information__personal--name">
-            <%= @room.users[0].name%>
+            <%= @host.name%>
           </div>
         <% end %>
       </div>
@@ -119,7 +119,7 @@
         </div>
         <%= form_with(model: [@animal, @room, @message], local: true, id: "new_message") do |f| %>
           <%= f.text_area :content, placeholder: "メッセージを送る", class: "form__textbox"%>
-          <% if @room.status_id == 1 %>
+          <% if @room.status == 1 %>
             <div class="form__submit">里親不成立となりました</div>
           <% else %>
             <%= f.submit "送信", class: "form__submit" %>

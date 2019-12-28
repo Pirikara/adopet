@@ -57,15 +57,15 @@
               <div class="giving-animals__messages ">
                 <% @rooms.each do |room| %>
                   <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id), class: "giving-animals__messages__link" do%>
-                    <% if current_user.id == room.users[0].id %>
+                    <% if current_user.id == room.host_id %>
                       <div class="giving-animals__messages__link--message">
                         <div class="giving-animals__messages__link--message--from">
                           <div class="giving-animals__messages__link--message--from--icon">
-                            <%= image_tag "#{room.users[1].icon}" %>
+                            <%= image_tag "#{User.find(room.client_id).icon}" %>
                           </div>
                           <div class="giving-animals__messages__link--message--from--name">
-                            <%= room.users[1].name %>
-                            <% if room.status_id == 1 %>
+                            <%= User.find(room.client_id).name %>
+                            <% if room.status == 1 %>
                               <span class="adopt-status">
                                 不成立
                               </span>
@@ -93,15 +93,15 @@
                       <div class="giving-animals__messages__link--message">
                         <div class="giving-animals__messages__link--message--from">
                           <div class="giving-animals__messages__link--message--from--icon">
-                            <%= image_tag "#{room.users[0].icon}" %>
+                            <%= image_tag "#{User.find(room.host_id).icon}" %>
                           </div>
                           <div class="giving-animals__messages__link--message--from--name">
-                            <%= room.users[0].name %>
-                            <% if room.status_id == 1 %>
+                            <%= User.find(room.host_id).name %>
+                            <% if room.status == 1 %>
                               <span class="adopt-status">
                                 不成立
                               </span>
-                            <% elsif room.status_id == 0 %>
+                            <% elsif room.status == 0 %>
                               <span class="adopt-status">
                                 成立
                               </span>

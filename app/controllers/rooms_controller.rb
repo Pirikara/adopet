@@ -6,13 +6,8 @@ class RoomsController < ApplicationController
 
   def create
     room = Room.new(room_params)
-    #animal_idにひもづくRoomを全て取得
-    rooms = Room.where(animal_id: room.animal_id)
-    #すでにルーム作成済みかどうかを検証
-    exist = rooms.each do |r|
-      room_users = RoomUser.where(room_id: r.id, user_id: current_user.id)
-    end
-    if exist == []
+    rooms = Room.where(animal_id: room.animal_id, host_id: room.host_id, client_id: room.client_id)
+    if rooms == []
       room.save
       redirect_to animal_room_path(animal_id: room.animal_id, id: room.id)
     else
@@ -23,17 +18,18 @@ class RoomsController < ApplicationController
   def show
     @animal = Animal.find(params[:animal_id])
     @room = Room.find(params[:id])
+    @host = User.find(@room.host_id)
+    @client = User.find(@room.client_id)
     @message = Message.new
     @messages = @room.messages.includes(:user)
   end
 
+
   def transaction
     @animal = Animal.find(params[:animal_id])
     @room = Room.find(params[:room_id])
-    #roomにひもづく2人のユーザーのうち、animalの出品者ではない方のユーザーを検索
-    @user = @room.users.find{|user| user.id != @animal.giver_id}
+    @user = User.find(@room.client_id)
     if @animal.update(taker_id: @user.id)
-      
       redirect_to user_path(current_user.id)
     else
       redirect_to animals_path
@@ -52,7 +48,7 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:animal_id, user_ids:[])
+    params.require(:room).permit(:animal_id, :host_id, :client_id)
   end
 
   def set_params
