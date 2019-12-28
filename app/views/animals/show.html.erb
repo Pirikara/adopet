@@ -1,7 +1,13 @@
 <main class="animal-main">
   <div class="animal-images">
     <div class="animal-images__image-left">
-      <%= image_tag "#{@animal.images[0].image_url}"%>
+      <% if @animal.taker_id.present?%>
+        <%= image_tag "#{@animal.images[0].image_url}"%>
+        <div class="buied_item">
+        </div>
+      <% else %>
+        <%= image_tag "#{@animal.images[0].image_url}"%>        
+      <% end %>
     </div>
     <% if @animal.images.length == 5%>
       <div class="animal-images__image-right">

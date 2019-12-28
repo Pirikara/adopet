@@ -1,5 +1,5 @@
 .room-wrapper{
-  width: 800px;
+  width: 700px;
   margin: 40px auto 0;
 }
 
@@ -63,10 +63,9 @@
 
 //ジャッジボタン
 .counterparty-information__judge{
-  display: flex;
-  justify-content: center;
+  text-align: center;
   &--yes{
-    margin-right: 30px;
+
     button{
       font-size: 16px;
       color:  #3EC1C9;
@@ -74,18 +73,14 @@
       width: 200px;
       cursor: pointer;
       border-radius: 8px;
-      border: #fff;
-    }
-  }
-  &--no{
-    button{
-      font-size: 16px;
-      color: #484848;
-      height: 100px;
-      width: 200px;
-      cursor: pointer;
-      border-radius: 8px;
-      border: #fff;
+      border: 2px solid #3EC1C9;
+      i{
+        font-size: 40px;
+        padding-bottom: 10px;
+      }
+      p{
+        font-weight: 600;
+      }
     }
   }
 }

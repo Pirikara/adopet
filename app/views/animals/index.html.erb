@@ -12,10 +12,18 @@
       <% @animals.each do |animal| %>
         <%= link_to "animals/#{animal.id}", class: "animal-show__link" do%>
           <div class="animal-show__link--image">
-            <%= image_tag "#{animal.images[0].image_url}", size: '240x160'%>
-            <div class="animal-show__link--image-prefecture">
-              <%= animal.prefecture.name %>
-            </div>
+            <% if animal.taker_id.present?%>
+              <%= image_tag "#{animal.images[0].image_url}", size: '240x160'%>
+              <div class="animal-show__link--image-prefecture">
+                <%= animal.prefecture.name %>
+              </div>
+              <div class="buied_item"></div>
+            <% else%>
+              <%= image_tag "#{animal.images[0].image_url}", size: '240x160'%>
+              <div class="animal-show__link--image-prefecture">
+                <%= animal.prefecture.name %>
+              </div>
+            <% end %>
           </div>
           <div class="animal-show__link--name">
             <%= animal.name%>
