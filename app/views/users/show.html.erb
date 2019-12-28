@@ -27,7 +27,13 @@
               <%= link_to animal_path(animal.id), class: "giving-animals--link" do %>
                 <div class="giving-animals--link__animal">
                   <div class="giving-animals--link__animal--photo">
-                    <%= image_tag "#{animal.images[0].image_url}" %>
+                    <% if animal.taker_id.present? %>
+                      <%= image_tag "#{animal.images[0].image_url}" %>
+                      <div class="buied_item">
+                      </div>
+                    <% else %>
+                      <%= image_tag "#{animal.images[0].image_url}" %>                    
+                    <% end %>
                   </div>
                   <div class="giving-animals--link__animal--content">
                     <div class="giving-animals--link__animal--content--name">
@@ -63,18 +69,23 @@
                           <div class="giving-animals__messages__link--message--from--icon">
                             <%= image_tag "#{User.find(room.client_id).icon}" %>
                           </div>
-                          <div class="giving-animals__messages__link--message--from--name">
-                            <%= User.find(room.client_id).name %>
-                            <% if room.status == 1 %>
-                              <span class="adopt-status">
-                                不成立
-                              </span>
-                            <% elsif room.animal.taker_id == current_user.id %>
-                              <span class="adopt-status">
-                                成立
-                              </span>
+                          <% if room.animal.taker_id.present? %>
+                            <% if room.animal.taker_id == room.client_id %>
+                              <div class="giving-animals__messages__link--message--from--name">
+                                <%= User.find(room.client_id).name %>
+                              </div>
+                              <div class="dicision__yes">里親決定</div>
+                            <% else %>
+                              <div class="giving-animals__messages__link--message--from--name">
+                                <%= User.find(room.client_id).name %>
+                              </div>
+                              <div class="dicision__no">里親不成立</div>
                             <% end %>
-                          </div>
+                          <% else %>
+                            <div class="giving-animals__messages__link--message--from--name">
+                              <%= User.find(room.client_id).name %>
+                            </div>
+                          <% end %>
                         </div>
                         <div class="giving-animals__messages__link--message--content">
                           <% if Message.new_message(room.id) %>
@@ -93,19 +104,14 @@
                       <div class="giving-animals__messages__link--message">
                         <div class="giving-animals__messages__link--message--from">
                           <div class="giving-animals__messages__link--message--from--icon">
-                            <%= image_tag "#{User.find(room.host_id).icon}" %>
+                            <% if room.animal.taker_id == current_user.id%>
+                              <%= image_tag "#{User.find(room.client_id).icon}" %>
+                            <% else %>
+                              <%= image_tag "#{User.find(room.client_id).icon}" %>
+                            <% end %>
                           </div>
                           <div class="giving-animals__messages__link--message--from--name">
                             <%= User.find(room.host_id).name %>
-                            <% if room.status == 1 %>
-                              <span class="adopt-status">
-                                不成立
-                              </span>
-                            <% elsif room.status == 0 %>
-                              <span class="adopt-status">
-                                成立
-                              </span>
-                            <% end %>
                           </div>
                         </div>
                         <div class="giving-animals__messages__link--message--content">
