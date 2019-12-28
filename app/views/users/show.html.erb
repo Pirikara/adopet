@@ -65,6 +65,15 @@
                           </div>
                           <div class="giving-animals__messages__link--message--from--name">
                             <%= room.users[1].name %>
+                            <% if room.status_id == 1 %>
+                              <span class="adopt-status">
+                                不成立
+                              </span>
+                            <% elsif room.animal.taker_id == current_user.id %>
+                              <span class="adopt-status">
+                                成立
+                              </span>
+                            <% end %>
                           </div>
                         </div>
                         <div class="giving-animals__messages__link--message--content">
@@ -88,6 +97,15 @@
                           </div>
                           <div class="giving-animals__messages__link--message--from--name">
                             <%= room.users[0].name %>
+                            <% if room.status_id == 1 %>
+                              <span class="adopt-status">
+                                不成立
+                              </span>
+                            <% elsif room.status_id == 0 %>
+                              <span class="adopt-status">
+                                成立
+                              </span>
+                            <% end %>
                           </div>
                         </div>
                         <div class="giving-animals__messages__link--message--content">

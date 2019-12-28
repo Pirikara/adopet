@@ -57,10 +57,12 @@
             <% end %>
           </div>
           <div class="counterparty-information__judge--no">
-            <button>
-              <i class="fa fa-heartbeat"></i>
-              <p>里親不成立</p>
-            </button>
+            <%= link_to animal_room_unsuccessful_path(animal_id: @animal.id, room_id: @room.id) do%>
+              <button>
+                <i class="fa fa-heartbeat"></i>
+                <p>里親不成立</p>
+              </button>
+            <% end %>
           </div>
         </div>
       <% end %>
@@ -117,7 +119,11 @@
         </div>
         <%= form_with(model: [@animal, @room, @message], local: true, id: "new_message") do |f| %>
           <%= f.text_area :content, placeholder: "メッセージを送る", class: "form__textbox"%>
-          <%= f.submit "送信", class: "form__submit" %>
+          <% if @room.status_id == 1 %>
+            <div class="form__submit">里親不成立となりました</div>
+          <% else %>
+            <%= f.submit "送信", class: "form__submit" %>
+          <% end %>
         <% end %>
       </div>
     </div>

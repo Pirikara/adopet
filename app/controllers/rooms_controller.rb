@@ -6,7 +6,9 @@ class RoomsController < ApplicationController
 
   def create
     room = Room.new(room_params)
+    #animal_idにひもづくRoomを全て取得
     rooms = Room.where(animal_id: room.animal_id)
+    #すでにルーム作成済みかどうかを検証
     exist = rooms.each do |r|
       room_users = RoomUser.where(room_id: r.id, user_id: current_user.id)
     end
@@ -28,14 +30,23 @@ class RoomsController < ApplicationController
   def transaction
     @animal = Animal.find(params[:animal_id])
     @room = Room.find(params[:room_id])
-    if @animal.update(taker_id: @room.users[1].id)
-      redirect_to user_path(@room.users[0].id)
+    #roomにひもづく2人のユーザーのうち、animalの出品者ではない方のユーザーを検索
+    @user = @room.users.find{|user| user.id != @animal.giver_id}
+    if @animal.update(taker_id: @user.id)
+      
+      redirect_to user_path(current_user.id)
     else
       redirect_to animals_path
     end
   end
 
-  def done
+  def unsuccessful
+    @room = Room.find(params[:room_id])
+    if @room.update(status_id: 1)
+      redirect_to user_path(@room.users[0].id)
+    else
+      redirect_to animals_path
+    end
   end
 
   private
