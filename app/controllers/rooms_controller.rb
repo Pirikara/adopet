@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_params, only: [:show]
+  before_action :access_limit, only: [:create, :transaction]
+  
   def new
     @room = Room.new
   end
@@ -36,15 +39,6 @@ class RoomsController < ApplicationController
     end
   end
 
-  def unsuccessful
-    @room = Room.find(params[:room_id])
-    if @room.update(status_id: 1)
-      redirect_to user_path(@room.users[0].id)
-    else
-      redirect_to animals_path
-    end
-  end
-
   private
 
   def room_params
@@ -53,5 +47,13 @@ class RoomsController < ApplicationController
 
   def set_params
     @room = Room.find(params[:id])
+  end
+
+  #里親決定済みの動物に関するアクセス制限
+  def access_limit
+    @animal = Animal.find(params[:animal_id])
+    if @animal.taker_id.present?
+      redirect_to animal_path(@animal.id)
+    end
   end
 end

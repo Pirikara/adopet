@@ -1,5 +1,8 @@
 class AnimalsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_params, only: [:show, :edit, :update, :destroy]
+  before_action :user_access_limit, only: [:edit, :update, :destroy]
+
   def index
     @animals = Animal.all
   end
@@ -66,5 +69,12 @@ class AnimalsController < ApplicationController
 
     def search_params
       params.fetch(:search, {}).permit(:name, :prefecture_id, :category_id)
+    end
+
+    def user_access_limit
+      @animal = Animal.find(params[:id])
+      if current_user.id != @animal.giver_id
+        redirect_to item_path(@animal.id)
+      end
     end
 end
