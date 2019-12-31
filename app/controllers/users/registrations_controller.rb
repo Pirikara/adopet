@@ -59,4 +59,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      sign_in @user
+      bypass_sign_in(@user)
+      redirect_to root_path
+    else
+      render json: { errors: @user.errors.full_messages }
+    end
+  end
+
+  private
+
+  def user_params
+    params.permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def customize_sign_up_params
+    devise_parameter_sanitizer.permit :sign_up, keys: [:username, :email, :password, :remember_me]
+  end
 end
