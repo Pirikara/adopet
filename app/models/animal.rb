@@ -5,9 +5,9 @@ class Animal < ApplicationRecord
             :description,
             :category_id,
             :prefecture_id,
-            :gender_id,
-            presence: true
-
+            :gender_id, 
+            :giver_id, presence: true
+  
   #association
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true

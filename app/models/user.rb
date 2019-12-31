@@ -5,7 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   #validation
-
+  validates :name,
+            :email,
+            :password,
+            :password_confirmation, presence: true
+  
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,20}+\z/i}
+  validates :name, length: { maximum: 20 }
+  validates :email, uniqueness:true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  
   # associate
   has_many :animals
   has_many :comments

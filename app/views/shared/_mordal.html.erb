@@ -1,62 +1,75 @@
 <div class="sign_modal_wrapper">
   <div class="sign_modal">
     <div class="sign_up_modal sign_modal_content">
-      <i class="fas fa-times"></i>
-      <h2>新規登録フォーム</h2>
-      
-      <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+      <div class="sign_up_modal__content">
+        <i class="fas fa-times"></i>
+        <h2>新規登録フォーム</h2>
+        
+        <%= form_with model: @user, url: user_registration_path, id: "mordal__signup__form" do |f| %>
 
-        <div class="field">
-          <label for="user_name"></label><br>
-          <input class="field__input" autofocus="autofocus" autocomplete="name" type="name" value="" name="user[name]" placeholder="Name">
-        </div>
+          <div class="field">
 
-        <div class="field">
-          <label for="user_email"></label><br>
-          <input class="field__input" autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" placeholder="Email">
-        </div>
+            <label for="name"></label><br>
+            <%= f.text_field :name, class: "field__input", autofocus: "autofocus", placeholder: "名前を入力してください" %>
+          </div>
 
-        <div class="field">
-          <label for="user_password"></label>
-          <br>
-          <input class="field__input" autocomplete="new-password" type="password" name="user[password]" aria-autocomplete="list" placeholder="Password">
-        </div>
+          <div class="field">
+            <label for="email"></label><br>
+            <%= f.text_field :email, class: "field__input", autofocus: "autofocus", placeholder: "メールアドレスを入力してください", id: "signup-email" %>
+          </div>
 
-        <div class="field">
-          <label for="user_password_confirmation"></label><br>
-          <input class="field__input" autocomplete="new-password" type="password" name="user[password_confirmation]" placeholder="Password confirmation">
-        </div>
+          <div class="field">
+            <label for="user_password"></label>
+            <br>
+            <%= f.password_field :password, class: "field__input", autocomplete: "new-password", placeholder: "パスワードを入力してください", id: "signup-password" %>
+          </div>
 
-        <div class="actions">
-          <input type="submit" name="commit" value="Sign up" data-disable-with="Sign up">
-        </div>
-      <% end %>
+          <div class="field">
+            <label for="user_password_confirmation"></label><br>
+            <%= f.password_field :password_confirmation, class: "field__input", placeholder: "パスワード（確認用）" %>
+          </div>
+
+          <div id="signup__errors">
+            <ul id="signup__errors__list"></ul>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up"%>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="sign_in_modal sign_modal_content">
-      <i class="fas fa-times"></i>
-      <h2>ログインフォーム</h2>
-      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
-        <div class="field">
-          <label for="user_email"></label><br>
-          <input class="field__input" autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" placeholder="Email">
-        </div>
+      <div class="sign_in_modal__content">
+        <i class="fas fa-times"></i>
+        <h2>ログインフォーム</h2>
+        <%= form_with model: @user, url: user_session_path, id: "mordal__signin__form" do |f| %>
+          <div class="field">
+            <label for="user_email"></label><br>
+            <%= f.text_field :email, class: "field__input", autofocus: "autofocus", placeholder: "メールアドレスを入力してください", name: "user[email]" %>
+          </div>
 
-        <div class="field">
-          <label for="user_password"></label><br>
-          <input class="field__input" autocomplete="current-password" type="password" name="user[password]" placeholder="Password">
-        </div>
+          <div class="field">
+            <label for="user_password"></label><br>
+            <%= f.password_field :password, class: "field__input", autocomplete: "current-password", placeholder: "パスワードを入力してください", name: "user[password]" %>
+          </div>
 
-        <div class="field">
-          <input class="field__remember" name="user[remember_me]" type="hidden" value="0">
-          <input class="field__remember" type="checkbox" value="1" name="user[remember_me]">
-          <label class="field__remember-me" for="user_remember_me">Remember me</label>
-        </div>
+          <div class="field">
+            <input class="field__remember" name="user[remember_me]" type="hidden" value="0">
+            <input class="field__remember" type="checkbox" value="1" name="user[remember_me]">
+            <label class="field__remember-me" for="user_remember_me">Remember me</label>
+          </div>
 
-        <div class="actions">
-          <input type="submit" name="commit" value="Log in" data-disable-with="Log in">
-        </div>
-      <% end %>
+          <div id="signin__errors">
+            <ul id="signin__errors__list"></ul>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Log in" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
