@@ -36,7 +36,7 @@ class AnimalsController < ApplicationController
 
   def update
     if @animal.update(animal_update_params)
-      redirect_to animals_path
+      redirect_to animal_path(@animal.id)
     else
       render :edit
     end

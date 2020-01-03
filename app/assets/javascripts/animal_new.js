@@ -102,20 +102,6 @@ $(document).on('turbolinks:load', function(){
         console.log("new")
         //フォームの中身を削除 
         $(`#animal_images_attributes_${id}_image`).val("");
-        //フォームを一番後ろへ回す
-        $(`#animal_images_attributes_${id}_image`).appendTo('.hidden-content');
-        //フォームのidとname属性を変更
-        $('.hidden-field').each(function(index, field){
-          $(field).attr({name: `animal[images_attributes][${index}][image]`, id: `animal_images_attributes_${index}_image`});
-        })
-        //プレビューのidを変更
-        $('.preview-box').each(function(index, box){
-          $(box).attr('id', `preview-box__${index}`);
-        })
-        //削除ボタンのidを変更
-        $('.delete-box').each(function(index, box){
-          $(box).attr('id', `delete_btn_${index}`);
-        })
         var count = $('.preview-box').length;
         //5個めが消されたらラベルを表示
         if (count == 4) {
