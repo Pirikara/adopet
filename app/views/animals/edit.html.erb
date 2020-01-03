@@ -10,20 +10,38 @@
             <span class="form-require">必須</span>
           </h3>
           <p>最大5枚までアップロードできます</p>
-          <div id="image-box-1">
-            <div class="item-num-0" id="image-box__container">
-              <%= f.fields_for :images do |i| %>
-                <div class="input-area">
-                  <%= i.file_field :image, name:"animal[images_attributes][][image_url]", type: "file", multiple:true, value:"", style: "display:none", id:"img-file" %>
-                  <label for="img-file">
-                    <i class="fas fa-camera"></i>
-                  </label>
+          <div class="post__drop__box__container">
+            <div class="prev-content">
+              <% @animal.images.each do |image|%>
+                <div class="preview-box">
+                  <div class="upper-box">
+                    <%= image_tag image.image.url, width: "112", height: "112", alt: "preview"%>
+                  </div>
+                  <div class="lower-box">
+                    <div class="update-box">
+                      <label class="edit_btn">編集</label>
+                    </div>
+                    <div class="delete-box"><span>削除</span></div>
+                  </div>
                 </div>
+              <% end %>
+            </div>
+            <div class="label-content">
+              <%= f.label :"images_attributes_#{@animal.images.length}_image", class: "label-box", id: "label-box--#{@animal.images.length}" do%>
+                <pre class="label-box__text-visible">クリックしてファイルをアップロード</pre>
+              <% end %>
+            </div>
+            <div class="hidden-content">
+              <%= f.fields_for :images do|image| %>
+                <%= image.file_field :image, class: "hidden-field" %>
+                <%= image.check_box:_destroy , class: "hidden-checkbox" %>
+              <% end %>
+              <% @animal.images.length.upto(4) do |i| %>
+                <input name="animal[images_attributes][<%= "#{i}"%>][image]" id="animal_images_attributes_<%= "#{i}" %>_image" class="hidden-field" type="file" >
               <% end %>
             </div>
           </div>
         </div>
-
         <div class="animal-form__content">
           <div class="animal-form__content--group">
             <%= f.label :name, "名前"%>
@@ -40,7 +58,6 @@
             </div>
           </div>
         </div>
-
         <div class="animal-form__content clearfix">
           <h3>詳細情報</h3>
           <div class="animal-form__content--group">
@@ -65,7 +82,6 @@
             </div>
           </div>
         </div>
-
         <div class="animal-form__content submit-box">
           <%= f.submit "募集する", disable_with: "Save..." %>
           <%= link_to "もどる", root_path %>

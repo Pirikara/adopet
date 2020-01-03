@@ -1,5 +1,8 @@
 $(function(){
   $(document).on("ajax:success", '#mordal__signup__form', function(e){
+  });
+  $('#mordal__signup__form').on("ajax:error", function(e){
+    console.log("error");
     $('#signup__errors li').remove();
     var detail = e.detail;
     var data = detail[0];
@@ -8,8 +11,5 @@ $(function(){
       li = $('<li></li>').text(message);
       ul.append(li); 
     });
-  });
-  $('#mordal__signup__form').on("ajax:error", function(event, xhr){
-    console.log("error");
   });
 });
