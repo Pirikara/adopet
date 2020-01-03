@@ -35,6 +35,11 @@ class AnimalsController < ApplicationController
   end
 
   def update
+    if @animal.update(animal_update_params)
+      redirect_to animals_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -60,7 +65,17 @@ class AnimalsController < ApplicationController
         :category_id,
         :prefecture_id,
         :gender_id,
-        images_attributes: [:image_url]).merge(giver_id: current_user.id)
+        [images_attributes: [:image]]).merge(giver_id: current_user.id)
+    end
+
+    def animal_update_params
+      params.require(:animal).permit(
+        :name,
+        :description,
+        :category_id,
+        :prefecture_id,
+        :gender_id,
+        [images_attributes: [:image, :_destroy, :id]]).merge(giver_id: current_user.id)
     end
 
     def set_params
@@ -71,10 +86,11 @@ class AnimalsController < ApplicationController
       params.fetch(:search, {}).permit(:name, :prefecture_id, :category_id)
     end
 
+    #ログイン中のユーザーが動物の投稿者でない場合、詳細ページにリダイレクトされる
     def user_access_limit
       @animal = Animal.find(params[:id])
       if current_user.id != @animal.giver_id
-        redirect_to item_path(@animal.id)
+        redirect_to animal_path(@animal.id)
       end
     end
 end
