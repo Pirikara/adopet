@@ -1,9 +1,10 @@
 
 .animals-main{
-  width: 1020px;
-  margin: 40px auto 0;
+  width: 100vw;
 }
 .search_view{
+  width: 80%;
+  margin: 40px auto;
   form{
     display: flex;
     justify-content: space-between;
@@ -44,7 +45,8 @@
 }
 
 .animals__container{
-  width: 100%;
+  width: 80%;
+  margin: 40px auto;
   &__content{
     display: flex;
     flex-wrap: wrap;
@@ -142,4 +144,8 @@
   &--username{
     font-size: 12px;
   }
+}
+
+@media screen and (max-width: 750px){
+  
 }
