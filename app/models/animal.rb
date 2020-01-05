@@ -22,7 +22,6 @@ class Animal < ApplicationRecord
 
   #method
   def self.search(search)
-    return Animal.all unless search
     #いけてる
     if search[:name] == "" && search[:prefecture_id] != "" && search[:category_id] != ""
       Animal.where("(prefecture_id = ?) AND (category_id = ?)", search[:prefecture_id], search[:category_id])
@@ -44,6 +43,8 @@ class Animal < ApplicationRecord
     #いけてる
     elsif search[:name] != "" && search[:prefecture_id] == "" && search[:category_id] == ""
       Animal.where("name LIKE(?)", "%#{search[:name]}%")
+    elsif search[:name] == "" && search[:prefecture_id] == "" && search[:category_id] == ""
+      Animal.all
     end
   end
 end
