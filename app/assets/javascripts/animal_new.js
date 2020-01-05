@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function(){
     function buildHTML(count) {
       var html = `<div class="preview-box" id="preview-box__${count}">
                     <div class="upper-box">
-                      <img src="" width="112" height="112" alt="preview">
+                      <img src="" alt="preview">
                     </div>
                     <div class="lower-box">
                       <div class="update-box">
@@ -18,7 +18,6 @@ $(document).on('turbolinks:load', function(){
                   </div>`
       return html;
     }
-
     //投稿編集時
     //animals/:i/editページへリンクした際のアクション=======================================
     if (window.location.href.match(/\/animals\/\d+\/edit/)){
@@ -46,8 +45,13 @@ $(document).on('turbolinks:load', function(){
     function setLabel() {
       //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
       var prevContent = $('.label-content').prev();
-      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-      $('.label-content').css('width', labelWidth);
+      if(window.matchMedia( '(max-width: 480px)' ).matches){
+        labelWidth = (370 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+        $('.label-content').css('width', labelWidth);
+      }else{
+        labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+        $('.label-content').css('width', labelWidth);
+      }
     }
 
     // プレビューの追加
