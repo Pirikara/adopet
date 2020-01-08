@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
     end
 
     def access_limit
-      @room = Room.find(params[:id])
+      @room = Room.find(params[:room_id])
       if @room.host_id != current_user.id && @room.client_id != current_user.id
         redirect_to room_path
       end

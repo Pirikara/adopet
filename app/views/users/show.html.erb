@@ -28,11 +28,11 @@
                 <div class="giving-animals--link__animal">
                   <div class="giving-animals--link__animal--photo">
                     <% if animal.taker_id.present? %>
-                      <%= image_tag "#{animal.images[0].image_url}" %>
+                      <%= image_tag "#{animal.images[0].image}" %>
                       <div class="buied_item">
                       </div>
                     <% else %>
-                      <%= image_tag "#{animal.images[0].image_url}" %>                    
+                      <%= image_tag "#{animal.images[0].image}" %>                    
                     <% end %>
                   </div>
                   <div class="giving-animals--link__animal--content">
