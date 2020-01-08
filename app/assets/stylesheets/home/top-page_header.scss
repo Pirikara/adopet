@@ -2,7 +2,6 @@
 .top-content{
   position: relative;
   width: 100vw;
-  height: 100vh;
   video{
     position: fixed;
     right: 0;
@@ -12,17 +11,21 @@
     object-fit: cover;
     width: auto;
     height: auto;
-    z-index: 1
+    z-index: -100;
   }
   &__header{
+    height: 100px;
+    background-color: #484848;
+    opacity: 0.7;
     position: relative;
     z-index: 2;
     display: flex;
     justify-content: space-between;
     &--icon{
+      line-height: 160px;
+      margin-left: 25px;
       img{
-        width: 200px;
-        height: 200px;
+        height: 50px;
       }
     }
     &--lists{
@@ -74,10 +77,8 @@
   padding-bottom: 24px;
   width: 441px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-  position: absolute;
-  left: 50px;
-  bottom: 200px;
-  z-index: 2;
+  margin-top: 200px;
+  margin-left: 50px;
   &:hover{
     opacity: 1;
   }
@@ -180,26 +181,9 @@
 
 @media screen and (max-width: 750px){
   //募集リンク部
-  .top-content{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    video{
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      z-index: 1
-    }
-  }
   .top-content__search-form{
     opacity: 0.75;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin: 50px auto;
     box-sizing: border-box;
   }
 }
@@ -207,27 +191,9 @@
 
 @media screen and (max-width: 480px){
   //募集リンク部
-  .top-content{
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    video{
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      z-index: 1
-    }
-  }
-
   .top-content__search-form{
     opacity: 0.75;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin: 50px auto;
     box-sizing: border-box;
   }
 }
@@ -235,27 +201,14 @@
 @media screen and (max-width: 360px){
   //募集リンク部
   .top-content{
-    position: relative;
-    width: 100vw;
-    height: 900px;
-    video{
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      z-index: 1
-    }
     &__header{
-      position: relative;
-      z-index: 2;
       display: flex;
       justify-content: space-between;
       &--icon{
+        line-height: 100px;
         img{
-          width: 150px;
-          height: 150px;
+          vertical-align: middle;
+          width: 80px;
         }
       }
       &--lists{
@@ -304,10 +257,7 @@
   .top-content__search-form{
     opacity: 0.75;
     width: 90%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin: 50px auto;
     box-sizing: border-box;
 
     &--box--title{

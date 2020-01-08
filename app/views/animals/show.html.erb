@@ -2,29 +2,29 @@
   <div class="animal-images">
     <div class="animal-images__image-left">
       <% if @animal.taker_id.present?%>
-        <%= image_tag "#{@animal.images[0].image_url}"%>
+        <%= image_tag "#{@animal.images[0].image}"%>
         <div class="buied_item">
         </div>
       <% else %>
-        <%= image_tag "#{@animal.images[0].image_url}"%>        
+        <%= image_tag "#{@animal.images[0].image}"%>        
       <% end %>
     </div>
     <% if @animal.images.length == 5%>
       <div class="animal-images__image-right">
         <div class="animal-images__image-right__top">
           <div class="animal-images__image-right__top-left">
-            <%= image_tag "#{@animal.images[1].image_url}"%>
+            <%= image_tag "#{@animal.images[1].image}"%>
           </div>
           <div class="animal-images__image-right__top-right">
-            <%= image_tag "#{@animal.images[2].image_url}"%>
+            <%= image_tag "#{@animal.images[2].image}"%>
           </div>
         </div>
         <div class="animal-images__image-right__bottom">
           <div class="animal-images__image-right__bottom-left">
-            <%= image_tag "#{@animal.images[3].image_url}"%>
+            <%= image_tag "#{@animal.images[3].image}"%>
           </div>
           <div class="animal-images__image-right__bottom-right">
-            <%= image_tag "#{@animal.images[4].image_url}"%>
+            <%= image_tag "#{@animal.images[4].image}"%>
           </div>
         </div>
       </div>
@@ -32,15 +32,15 @@
       <div class="animal-images__image-right">
         <div class="animal-images__image-right__top">
           <div class="animal-images__image-right__top-left">
-            <%= image_tag "#{@animal.images[1].image_url}"%>
+            <%= image_tag "#{@animal.images[1].image}"%>
           </div>
           <div class="animal-images__image-right__top-right">
-            <%= image_tag "#{@animal.images[2].image_url}"%>
+            <%= image_tag "#{@animal.images[2].image}"%>
           </div>
         </div>
         <div class="animal-images__image-right__bottom">
           <div class="animal-images__image-right__bottom-left">
-            <%= image_tag "#{@animal.images[3].image_url}"%>
+            <%= image_tag "#{@animal.images[3].image}"%>
           </div>
           <div class="animal-images__image-right__bottom-right">No Image</div>
         </div>
@@ -49,10 +49,10 @@
       <div class="animal-images__image-right">
         <div class="animal-images__image-right__top">
           <div class="animal-images__image-right__top-left">
-            <%= image_tag "#{@animal.images[1].image_url}"%>
+            <%= image_tag "#{@animal.images[1].image}"%>
           </div>
           <div class="animal-images__image-right__top-right">
-            <%= image_tag "#{@animal.images[2].image_url}"%>
+            <%= image_tag "#{@animal.images[2].image}"%>
           </div>
         </div>
         <div class="animal-images__image-right__bottom">
@@ -64,7 +64,7 @@
       <div class="animal-images__image-right">
         <div class="animal-images__image-right__top">
           <div class="animal-images__image-right__top-left">
-            <%= image_tag "#{@animal.images[1].image_url}"%>
+            <%= image_tag "#{@animal.images[1].image}"%>
           </div>
           <div class="animal-images__image-right__top-right">No Image</div>
         </div>

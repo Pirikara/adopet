@@ -11,38 +11,40 @@
     <div class="animals__container__content">
       <% @animals.each do |animal| %>
         <%= link_to animal_path(animal.id), class: "animal-show__link" do%>
-          <div class="animal-show__link--image">
-            <% if animal.taker_id.present?%>
-              <%= image_tag "#{animal.images[0].image_url}", size: '240x160'%>
-              <div class="animal-show__link--image-prefecture">
-                <%= animal.prefecture.name %>
+          <div class="animal-show__link--cover">          
+            <div class="animal-show__link--cover--image">
+              <% if animal.taker_id.present?%>
+                <%= image_tag "#{animal.images[0].image}", size: '240x160'%>
+                <div class="animal-show__link--cover--image-prefecture">
+                  <%= animal.prefecture.name %>
+                </div>
+                <div class="buied_item"></div>
+              <% else%>
+                <%= image_tag "#{animal.images[0].image}", size: '240x160'%>
+                <div class="animal-show__link--cover--image-prefecture">
+                  <%= animal.prefecture.name %>
+                </div>
+              <% end %>
+            </div>
+            <div class="animal-show__link--cover--name">
+              <%= animal.name%>
+              <% if animal.gender.id == 1 %>
+              <div class="animal-show__link--cover--name--gender--male">
+                <i class="fas fa-mars"></i>
               </div>
-              <div class="buied_item"></div>
-            <% else%>
-              <%= image_tag "#{animal.images[0].image_url}", size: '240x160'%>
-              <div class="animal-show__link--image-prefecture">
-                <%= animal.prefecture.name %>
+              <% elsif animal.gender.id == 2%>
+              <div class="animal-show__link--cover--name--gender--female">
+                <i class="fas fa-venus"></i>
               </div>
-            <% end %>
-          </div>
-          <div class="animal-show__link--name">
-            <%= animal.name%>
-            <% if animal.gender.id == 1 %>
-            <div class="animal-show__link--name--gender--male">
-              <i class="fas fa-mars"></i>
+              <% else %>
+              <div class="animal-show__link--cover--name--gender--unknown">
+                <%= animal.gender.name%>
+              </div>
+              <% end %>
             </div>
-            <% elsif animal.gender.id == 2%>
-            <div class="animal-show__link--name--gender--female">
-              <i class="fas fa-venus"></i>
+            <div class="animal-show__link--cover--username">
+              <%= animal.giver.name%>
             </div>
-            <% else %>
-            <div class="animal-show__link--name--gender--unknown">
-              <%= animal.gender.name%>
-            </div>
-            <% end %>
-          </div>
-          <div class="animal-show__link--username">
-            <%= animal.giver.name%>
           </div>
         <% end %>
       <% end %>

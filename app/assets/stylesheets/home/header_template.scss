@@ -4,9 +4,10 @@
   justify-content: space-between;
   border-bottom:1px solid #ebebeb;
   &--icon{
+    line-height: 160px;
+    margin-left: 25px;
     img{
-      width: 130px;
-      height: 130px;
+      height: 50px;
     }
   }
   &--lists{
@@ -74,5 +75,80 @@
 }
 
 @media screen and (max-width: 360px){
-
+  .header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom:1px solid #ebebeb;
+    &--icon{
+      line-height: 100px;
+      img{
+        vertical-align: middle;
+        width: 80px;
+      }
+    }
+    &--lists{
+      display: flex;
+      justify-content: space-between;
+      #list-signin{
+        height: 30px;
+        text-align: center;
+        margin-top: 30px;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #484848;
+        font-weight: 800;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+      }
+      #list-signup{
+        height: 30px;
+        text-align: center;
+        margin-top: 30px;
+        margin-right: 30px;
+        color: #484848;
+        font-weight: 800;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+      }
+      &--list{
+        height: 30px;
+        text-align: center;
+        margin-top: 30px;
+        margin-right: 10px;
+        font-size: 14px;
+        color: #484848;
+        font-weight: 800;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        a{
+          text-decoration: none;
+          margin: 0 auto;
+          color: #484848;
+        }
+      }
+      li::after{
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #484848;
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+      }
+      li:hover::after{
+        bottom: -4px;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
 }
