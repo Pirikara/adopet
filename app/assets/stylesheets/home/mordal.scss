@@ -1,6 +1,7 @@
 //サインイン・サインアウトのモーダル部
 .sign_modal_wrapper{
   z-index: 10;
+  overflow: scroll;
 }
 
 .sign_in_modal {
