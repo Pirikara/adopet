@@ -27,6 +27,11 @@
               <% end %>
             </div>
           </div>
+          <% if @images.errors.any? %>
+            <% @images.errors.full_messages.each do |message|%>
+              <p class="error-message"><%= message %></p>
+            <% end %>
+          <% end %>
         </div>
 
         <div class="animal-form__content">
@@ -36,6 +41,7 @@
             <div class="animal-form__content--group__name">
               <%= f.text_field :name %>
             </div>
+            <%= render partial: "/shared/error", locals: { key: :name} %>
           </div>
           <div class="animal-form__content--group">
             <%= f.label :description, "説明" %>
@@ -43,6 +49,7 @@
             <div class="animal-form__content--group__text">
               <%= f.text_area :description %>
             </div>
+            <%= render partial: "/shared/error", locals: { key: :description } %>
           </div>
         </div>
 
@@ -54,6 +61,7 @@
             <div class="animal-form__content--group__select">
               <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: '---' %>
             </div>
+            <%= render partial: "/shared/error", locals: { key: :category_id} %>
           </div>
           <div class="animal-form__content--group">
             <%= f.label :prefecture_id, "エリア" %>
@@ -61,6 +69,7 @@
             <div class="animal-form__content--group__select">
               <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '---'%>
             </div>
+            <%= render partial: "/shared/error", locals: { key: :prefecture_id} %>
           </div>
           <div class="animal-form__content--group">
             <%= f.label :gender_id, "性別" %>
@@ -68,6 +77,7 @@
             <div class="animal-form__content--group__select">
               <%= f.collection_select :gender_id, Gender.all, :id, :name, include_blank: '---' %>
             </div>
+            <%= render partial: "/shared/error", locals: { key: :gender_id} %>
           </div>
         </div>
 

@@ -4,39 +4,52 @@
       <div class="sign_up_modal__content">
         <i class="fas fa-times"></i>
         <h2>新規登録フォーム</h2>
-        
-        <%= form_with model: @user, url: user_registration_path, id: "mordal__signup__form" do |f| %>
+        <div class="signup__form">
+          <%= form_with model: @user, url: user_registration_path, id: "mordal__signup__form" do |f| %>
 
-          <div class="field">
+            <div class="field">
 
-            <label for="name"></label><br>
-            <%= f.text_field :name, class: "field__input", autofocus: "autofocus", placeholder: "名前を入力してください" %>
-          </div>
+              <label for="name"></label><br>
+              <%= f.text_field :name, class: "field__input", autofocus: "autofocus", placeholder: "名前を入力してください" %>
+              <div id="signup__errors">
+                <ul id="signup_errors__list" class="name--error">
+                </ul>
+              </div>
+            </div>
 
-          <div class="field">
-            <label for="email"></label><br>
-            <%= f.text_field :email, class: "field__input", autofocus: "autofocus", placeholder: "メールアドレスを入力してください", id: "signup-email" %>
-          </div>
+            <div class="field">
+              <label for="email"></label><br>
+              <%= f.text_field :email, class: "field__input", autofocus: "autofocus", placeholder: "メールアドレスを入力してください", id: "signup-email" %>
+              <div id="signup__errors">
+                <ul id="signup_errors__list" class="email--error">
+                </ul>
+              </div>
+            </div>
 
-          <div class="field">
-            <label for="user_password"></label>
-            <br>
-            <%= f.password_field :password, class: "field__input", autocomplete: "new-password", placeholder: "パスワードを入力してください", id: "signup-password" %>
-          </div>
+            <div class="field">
+              <label for="user_password"></label>
+              <br>
+              <%= f.password_field :password, class: "field__input", autocomplete: "new-password", placeholder: "パスワードを入力してください", id: "signup-password" %>
+              <div id="signup__errors">
+                <ul id="signup_errors__list" class="password--error">
+                </ul>
+              </div>
+            </div>
 
-          <div class="field">
-            <label for="user_password_confirmation"></label><br>
-            <%= f.password_field :password_confirmation, class: "field__input", placeholder: "パスワード（確認用）" %>
-          </div>
+            <div class="field">
+              <label for="user_password_confirmation"></label><br>
+              <%= f.password_field :password_confirmation, class: "field__input", placeholder: "パスワード（確認用）" %>
+              <div id="signup__errors">
+                <ul id="signup_errors__list" class="password_confirmation--error">
+                </ul>
+              </div>
+            </div>
 
-          <div id="signup__errors">
-            <ul id="signup__errors__list"></ul>
-          </div>
-
-          <div class="actions">
-            <%= f.submit "Sign up"%>
-          </div>
-        <% end %>
+            <div class="actions">
+              <%= f.submit "Sign up"%>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 

@@ -67,7 +67,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       bypass_sign_in(@user)
       redirect_to root_path
     else
-      render json: { errors: @user.errors.full_messages }, status: 402
+      render json: { errors: @user.errors.keys.map { |key|[key, @user.errors.full_messages_for(key)]}.to_h }, status: 402
     end
   end
 
