@@ -43,6 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do

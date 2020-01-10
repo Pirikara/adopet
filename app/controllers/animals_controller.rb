@@ -18,11 +18,10 @@ class AnimalsController < ApplicationController
 
   def create
     @animal = Animal.new(animal_params)
-    @images = @animal.images.build
-    if @animal.valid? && @images.valid?
-      @animal.save
+    if @animal.save
       redirect_to root_path
     else
+      @animal.images.build
       #errorハッシュのキーを元に、各キーに対応するエラーメッセージの配列を作り、ハッシュ形式に変換する
       @errors = @animal.errors.keys.map { |key|[key, @animal.errors.full_messages_for(key)]}.to_h
       render :new
