@@ -34,7 +34,6 @@
    #signin__errors{
     margin-top: 20px;
     text-align: left;
-    padding-left: 57px;
     &__list{
       li{
         color: #3EC1C9;
@@ -74,14 +73,12 @@
    #signup__errors{
      margin-top: 20px;
      text-align: left;
-     padding-left: 57px;
-     &__list{
-       li{
-         color: #3EC1C9;
-       }
-     }
    }
   }
+}
+
+.signup__form{
+  padding: 0 58px;
 }
 
 .field{
@@ -133,14 +130,7 @@
     text-align: center;
     #signin__errors{
       margin-top: 20px;
-      text-align: left;
-      padding-left: 15px;
-      padding-right: 15px;
-      &__list{
-        li{
-          color: #3EC1C9;
-        }
-      }    
+      text-align: left;  
     }
   }
   .sign_up_modal {
@@ -164,6 +154,10 @@
         }
       }    
     }
+  }
+
+  .signup__form{
+    padding: 0 10px;
   }
 
   .field{

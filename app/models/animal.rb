@@ -6,7 +6,10 @@ class Animal < ApplicationRecord
             :category_id,
             :prefecture_id,
             :gender_id, 
-            :giver_id, presence: true
+            :giver_id,
+            :images, presence: true
+
+  validates :name, length: { maximum: 6 }
   
   #association
   has_many :images, dependent: :destroy

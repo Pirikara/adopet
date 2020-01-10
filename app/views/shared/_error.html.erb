@@ -1,0 +1,5 @@
+<% if @errors.present? && @errors[key].present? %>
+  <% @errors[key].each do |message| %>
+    <p class="error-message"><%= message %></p>
+  <% end %>
+<% end %>
