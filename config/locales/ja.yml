@@ -4,8 +4,10 @@ ja:
     email: メールアドレス
     password: パスワード
     password_confirmation: パスワード (確認)
-    image: 画像
+    images: 画像
     description: 説明
     category_id: カテゴリー
     prefecture_id: エリア
     gender_id: 性別
+    giver_id: 投稿者
+    taker_id: 里親

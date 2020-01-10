@@ -27,11 +27,7 @@
               <% end %>
             </div>
           </div>
-          <% if @images.errors.any? %>
-            <% @images.errors.full_messages.each do |message|%>
-              <p class="error-message"><%= message %></p>
-            <% end %>
-          <% end %>
+           <%= render partial: "/shared/error", locals: { key: :images} %>
         </div>
 
         <div class="animal-form__content">
