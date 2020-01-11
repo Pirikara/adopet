@@ -33,7 +33,7 @@ describe User do
 
     it "メールアドレスが重複すると登録できない" do
       user = create(:user)
-      another_user = build(:user)
+      another_user = build(:user, email: user.email)
       another_user.valid?
       expect(another_user.errors[:email]).to include("はすでに存在します")
     end

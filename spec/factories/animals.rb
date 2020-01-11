@@ -5,5 +5,6 @@ FactoryBot.define do
     category_id                  {1}
     prefecture_id                {1}
     gender_id                    {1}
+    giver_id                     {1}
   end
 end

@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
 
   def create
     room = Room.new(room_params)
+    #同一ユーザーが同じ動物に対して複数のroomを作成できないようにする
     rooms = Room.where(animal_id: room.animal_id, host_id: room.host_id, client_id: room.client_id)
     if rooms == []
       room.save

@@ -19,7 +19,7 @@ class AnimalsController < ApplicationController
   def create
     @animal = Animal.new(animal_params)
     if @animal.save
-      redirect_to root_path
+      redirect_to animals_path
     else
       @animal.images.build
       #errorハッシュのキーを元に、各キーに対応するエラーメッセージの配列を作り、ハッシュ形式に変換する
