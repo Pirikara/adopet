@@ -352,6 +352,19 @@
 
 
 @media screen and (max-width: 480px){
+  //ユーザー詳細欄
+  .user-detail{
+    padding-top: 30px;
+    &__box{
+      &--photo{
+        width: 90px;
+        height: 90px;
+      }
+      &--name{
+        font-size: 16px;
+      }
+    }
+  }
   .tab-contents{
     width: 100%;
     .giving-animals{
@@ -438,6 +451,183 @@
           cursor: pointer;
         }    
       }
+    }
+  }
+  //取引メッセージ一覧
+  .giving-animals__messages{
+    width: 100%;
+    padding: 0;
+    .giving-animals__messages__link{
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      margin: 10px;
+      &--message{
+        display: flex;
+        justify-content: space-between;
+        &--from{
+          display: flex;
+          &--icon{
+            width: 40px;
+            height: 40px;
+            position: relative;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          &--name{
+            line-height: 40px;
+            margin-left: 10px;
+          }
+        }
+        &--content{
+          text-align: right;
+          line-height: 20px;
+          &__new{
+            color: #484848;
+            font-size: 14px;
+            font-weight: 600;
+          }
+          &__time{
+            font-size: 11px;
+            color: #aaa;
+          }
+          p{
+            padding-top: 5px;
+            color: #aaa;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+  //アカウント削除ボタン
+  .account-btns{
+    padding: 30px 10px;
+  }
+}
+
+
+
+@media screen and (max-width: 360px){
+  //ユーザー詳細欄
+  .user-detail{
+    padding-top: 20px;
+    &__box{
+      &--photo{
+        width: 60px;
+        height: 60px;
+      }
+      &--name{
+        font-size: 14px;
+      }
+    }
+  }
+  //ユーザー詳細
+  .user-description{
+    padding: 15px 30px 30px;
+    p{
+      font-size: 14px;
+    }
+  }
+  //タブ切り替え部分
+  .tab-group{
+    font-size: 14px;
+    .tab{
+      line-height: 50px;
+    }
+  }
+  //動物一覧
+  .tab-contents{
+    width: 100%;
+    .giving-animals{
+      padding: 20px;
+      &--link{
+        &__animal{
+          margin: 20px 5px 0;
+          &--photo{
+            img{
+              height: 80px;
+              object-fit: cover;
+            }
+            .buied_item{
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 100px 100px 0 0;
+              border-color: #3EC1C9 transparent transparent transparent;
+              position: absolute;
+              top: 0;
+              left: 0;
+              padding-top: 10px;
+              &:after{
+                content: "Desided";
+                display: block;
+                color: #fff;
+                transform: rotate(-45deg);
+                letter-spacing: 2px;
+                font-weight: 600;
+                position: absolute;
+                top: -70px;
+                left: 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //取引メッセージ一覧
+  .giving-animals__messages{
+    .giving-animals__messages__link{
+      &--message{
+        &--from{
+          &--icon{
+            width: 30px;
+            height: 30px;
+            position: relative;
+            img{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          &--name{
+            font-size: 12px;
+            line-height: 30px;
+            margin-left: 10px;
+          }
+        }
+        &--content{
+          text-align: right;
+          line-height: 20px;
+          &__new{
+            color: #484848;
+            font-size: 12px;
+            font-weight: 600;
+          }
+          &__time{
+            font-size: 11px;
+            color: #aaa;
+          }
+          p{
+            padding-top: 5px;
+            color: #aaa;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+  //アカウント削除ボタン
+  .account-btns{
+    padding: 10px 10px;
+    &__edit{
+      padding: 10px;
+    }
+    &__delete{
+      padding: 10px;
     }
   }
 }
