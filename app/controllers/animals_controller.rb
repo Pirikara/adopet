@@ -4,7 +4,11 @@ class AnimalsController < ApplicationController
   before_action :user_access_limit, only: [:edit, :update, :destroy]
 
   def index
-    @animals = Animal.all
+    @animals = Animal.page(params[:page]).per(15)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -55,7 +59,7 @@ class AnimalsController < ApplicationController
   end
 
   def search
-    @animals = Animal.search(search_params)
+    @animals = Animal.search(search_params).page(params[:page]).per(15)
   end
 
   private

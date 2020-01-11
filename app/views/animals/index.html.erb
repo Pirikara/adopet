@@ -51,6 +51,7 @@
         <% end %>
       <% end %>
     </div>
+    <%= paginate @animals, remote: true%>
   </div>
   <div class="radius-button">
     <%= link_to "里親を募集する", new_animal_path %>

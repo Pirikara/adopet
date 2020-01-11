@@ -1,0 +1,34 @@
+<% @animals.each do |animal| %>
+  <%= link_to animal_path(animal.id), class: "giving-animals__content--link" do %>
+    <div class="giving-animals__content--link__animal">
+      <div class="giving-animals__content--link__animal--photo">
+        <% if animal.taker_id.present? %>
+          <%= image_tag "#{animal.images[0].image}" %>
+          <div class="buied_item">
+          </div>
+        <% else %>
+          <%= image_tag "#{animal.images[0].image}" %>                    
+        <% end %>
+      </div>
+      <div class="giving-animals__content--link__animal--content">
+        <div class="giving-animals__content--link__animal--content--name">
+          <%= animal.name %>
+        </div>
+        <% if animal.gender.id == 1 %>
+        <div class="giving-animals__content--link__animal--content--male">
+          <i class="fas fa-mars"></i>
+        </div>
+        <% elsif animal.gender.id == 2%>
+        <div class="giving-animals__content--link__animal--content--female">
+          <i class="fas fa-venus"></i>
+        </div>
+        <% else %>
+        <div class="giving-animals__content--link__animal--content--unknown">
+          <%= animal.gender.name%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<%end%>
+<%= paginate @animals, remote: true%>

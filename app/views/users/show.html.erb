@@ -23,44 +23,47 @@
         <!--里親募集中タグの中身-->
         <ul class="tab-contents">
           <li class="giving-animals is-show">
-            <% @animals.each do |animal| %>
-              <%= link_to animal_path(animal.id), class: "giving-animals--link" do %>
-                <div class="giving-animals--link__animal">
-                  <div class="giving-animals--link__animal--photo">
-                    <% if animal.taker_id.present? %>
-                      <%= image_tag "#{animal.images[0].image}" %>
-                      <div class="buied_item">
+            <div class="giving-animals__content">
+              <% @animals.each do |animal| %>
+                <%= link_to animal_path(animal.id), class: "giving-animals__content--link" do %>
+                  <div class="giving-animals__content--link__animal">
+                    <div class="giving-animals__content--link__animal--photo">
+                      <% if animal.taker_id.present? %>
+                        <%= image_tag "#{animal.images[0].image}" %>
+                        <div class="buied_item">
+                        </div>
+                      <% else %>
+                        <%= image_tag "#{animal.images[0].image}" %>                    
+                      <% end %>
+                    </div>
+                    <div class="giving-animals__content--link__animal--content">
+                      <div class="giving-animals__content--link__animal--content--name">
+                        <%= animal.name %>
                       </div>
-                    <% else %>
-                      <%= image_tag "#{animal.images[0].image}" %>                    
-                    <% end %>
+                      <% if animal.gender.id == 1 %>
+                      <div class="giving-animals__content--link__animal--content--male">
+                        <i class="fas fa-mars"></i>
+                      </div>
+                      <% elsif animal.gender.id == 2%>
+                      <div class="giving-animals__content--link__animal--content--female">
+                        <i class="fas fa-venus"></i>
+                      </div>
+                      <% else %>
+                      <div class="giving-animals__content--link__animal--content--unknown">
+                        <%= animal.gender.name%>
+                      </div>
+                      <% end %>
+                    </div>
                   </div>
-                  <div class="giving-animals--link__animal--content">
-                    <div class="giving-animals--link__animal--content--name">
-                      <%= animal.name %>
-                    </div>
-                    <% if animal.gender.id == 1 %>
-                    <div class="giving-animals--link__animal--content--male">
-                      <i class="fas fa-mars"></i>
-                    </div>
-                    <% elsif animal.gender.id == 2%>
-                    <div class="giving-animals--link__animal--content--female">
-                      <i class="fas fa-venus"></i>
-                    </div>
-                    <% else %>
-                    <div class="giving-animals--link__animal--content--unknown">
-                      <%= animal.gender.name%>
-                    </div>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            <%end%>
+                <% end %>
+              <%end%>
+              <%= paginate @animals, remote: true%>
+            </div>
           </li>
           <!--取引メッセージ有り-->
           <li class="giving-animals animals-transactionmessages">
             <% if current_user.id == @user.id %>
-              <div class="giving-animals__messages ">
+              <div class="giving-animals__messages">
                 <% @rooms.each do |room| %>
                   <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id), class: "giving-animals__messages__link" do%>
                     <% if current_user.id == room.host_id %>
@@ -130,6 +133,7 @@
                     <% end %>
                   <% end %>
                 <% end %>
+                <%= paginate @rooms, remote: true %>
               </div>
             <% end %>
           </li>

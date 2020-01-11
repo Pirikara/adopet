@@ -228,9 +228,12 @@
   .animal-informations{
     padding: 10px 0;
     &__image{
+      width: 60px;
+      height: 60px;
       img{
         width: 60px;
         height: 60px;
+        object-fit: cover;
       }
     }
     &__content{
@@ -265,6 +268,7 @@
         img{
           width: 60px;
           height: 60px;
+          object-fit: cover;
         }
       }
       &--name{

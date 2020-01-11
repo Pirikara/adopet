@@ -76,10 +76,16 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass'
+#画像投稿
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+#アクティブハッシュの導入
 gem 'active_hash'
 gem 'pry-rails'
+#日本語化
 gem 'rails-i18n'
+#パンくず機能実装
 gem 'gretel'
+#ページネーション
+gem 'kaminari'
