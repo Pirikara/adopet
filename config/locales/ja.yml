@@ -11,3 +11,10 @@ ja:
     gender_id: 性別
     giver_id: 投稿者
     taker_id: 里親
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "..."

@@ -51,6 +51,10 @@
         <% end %>
       <% end %>
     </div>
+    <%= paginate @animals %>
+  </div>
+  <div class="radius-button">
+    <%= link_to "里親を募集する", new_animal_path %>
   </div>
 </main>
 <%= render 'shared/footer'%>

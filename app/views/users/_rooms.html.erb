@@ -1,0 +1,70 @@
+<% @rooms.each do |room| %>
+  <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id), class: "giving-animals__messages__link" do%>
+    <% if current_user.id == room.host_id %>
+      <div class="giving-animals__messages__link--message">
+        <div class="giving-animals__messages__link--message--from">
+          <div class="giving-animals__messages__link--message--from--icon">
+            <%= image_tag "#{User.find(room.client_id).icon}" %>
+          </div>
+          <% if room.animal.taker_id.present? %>
+            <% if room.animal.taker_id == room.client_id %>
+              <div class="giving-animals__messages__link--message--from--name">
+                <%= User.find(room.client_id).name %>
+              </div>
+              <div class="dicision__yes">里親決定</div>
+            <% else %>
+              <div class="giving-animals__messages__link--message--from--name">
+                <%= User.find(room.client_id).name %>
+              </div>
+              <div class="dicision__no">里親不成立</div>
+            <% end %>
+          <% else %>
+            <div class="giving-animals__messages__link--message--from--name">
+              <%= User.find(room.client_id).name %>
+            </div>
+          <% end %>
+        </div>
+        <div class="giving-animals__messages__link--message--content">
+          <% if Message.new_message(room.id) %>
+            <div class="giving-animals__messages__link--message--content__new">
+              <%= Message.new_message(room.id).content %>
+            </div>
+            <div class="giving-animals__messages__link--message--content__time">
+              <%= time_ago_in_words(Message.new_message(room.id).created_at)%>
+            </div>
+          <%else%>
+            <p>メッセージしましょう</p>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="giving-animals__messages__link--message">
+        <div class="giving-animals__messages__link--message--from">
+          <div class="giving-animals__messages__link--message--from--icon">
+            <% if room.animal.taker_id == current_user.id%>
+              <%= image_tag "#{User.find(room.client_id).icon}" %>
+            <% else %>
+              <%= image_tag "#{User.find(room.client_id).icon}" %>
+            <% end %>
+          </div>
+          <div class="giving-animals__messages__link--message--from--name">
+            <%= User.find(room.host_id).name %>
+          </div>
+        </div>
+        <div class="giving-animals__messages__link--message--content">
+          <% if Message.new_message(room.id) %>
+            <div class="giving-animals__messages__link--message--content__new">
+              <%= Message.new_message(room.id).content.truncate(13) %>
+            </div>
+            <div class="giving-animals__messages__link--message--content__time">
+              <%= time_ago_in_words(Message.new_message(room.id).created_at)%>
+            </div>
+          <%else%>
+            <p>メッセージしましょう</p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+<%= paginate @rooms, remote: true %>

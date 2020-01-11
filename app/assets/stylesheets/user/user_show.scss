@@ -80,68 +80,75 @@
 .tab-contents{
   .giving-animals{
     display: none;
-    flex-wrap: wrap;
-    padding: 20px;
-    &--link{
-      text-decoration: none;
-      cursor: pointer;
-      &__animal{
-        margin: 20px 5px 0;
-        &--photo{
-          position: relative;
-          img{
-            height: 210px;
-            width: 210px;
-          }
-          .buied_item{
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 100px 100px 0 0;
-            border-color: #3EC1C9 transparent transparent transparent;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding-top: 10px;
-            &:after{
-              content: "Desided";
-              display: block;
-              color: #fff;
-              transform: rotate(-45deg);
-              letter-spacing: 2px;
-              font-weight: 600;
+    &__content{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      &--link{
+        text-decoration: none;
+        cursor: pointer;
+        &__animal{
+          margin: 20px 5px 0;
+          &--photo{
+            position: relative;
+            img{
+              height: 210px;
+              width: 210px;
+            }
+            .buied_item{
+              width: 0;
+              height: 0;
+              border-style: solid;
+              border-width: 100px 100px 0 0;
+              border-color: #3EC1C9 transparent transparent transparent;
               position: absolute;
-              top: -70px;
-              left: 0px;
+              top: 0;
+              left: 0;
+              padding-top: 10px;
+              &:after{
+                content: "Desided";
+                display: block;
+                color: #fff;
+                transform: rotate(-45deg);
+                letter-spacing: 2px;
+                font-weight: 600;
+                position: absolute;
+                top: -70px;
+                left: 0px;
+              }
             }
           }
-        }
-        &--content{
-          display: flex;
-          &--name{
-            margin-right: 10px;
-          }
-          &--male{
-            .fas{
-              color: blue;
-              font-size: 16px;
+          &--content{
+            display: flex;
+            &--name{
+              margin-right: 10px;
+            }
+            &--male{
+              .fas{
+                color: blue;
+                font-size: 16px;
+                line-height: 24px;
+              }
+            }
+            &--female{
+              .fas{
+                color: red;
+                font-size: 16px;
+                line-height: 24px;  
+              }
+            }
+            &--unknown{
+              color: #aaa;
+              font-size: 12px;
               line-height: 24px;
             }
           }
-          &--female{
-            .fas{
-              color: red;
-              font-size: 16px;
-              line-height: 24px;  
-            }
-          }
-          &--unknown{
-            color: #aaa;
-            font-size: 12px;
-            line-height: 24px;
-          }
         }
       }
+    }
+    .pagination{
+      margin-top: 20px;
+      width: 100%;
     }
   }
   .is-show{
@@ -195,6 +202,10 @@
         }
       }
     }
+  }
+  .pagination{
+    margin-top: 20px;
+    margin-left: 10px;
   }
 }
 
@@ -266,43 +277,42 @@
   .tab-contents{
     width: 100%;
     .giving-animals{
-      display: none;
-      flex-wrap: wrap;
       padding: 20px;
-      box-sizing: border-box;
-      &--link{
-        width: 33%;
-        text-decoration: none;
-        cursor: pointer;
-        &__animal{
-          margin: 20px 5px 0;
-          &--photo{
-            width: 100%;
-            position: relative;
-            img{
-              height: 180px;
+      &__content{
+        &--link{
+          width: 33%;
+          text-decoration: none;
+          cursor: pointer;
+          &__animal{
+            margin: 20px 5px 0;
+            &--photo{
               width: 100%;
-            }
-            .buied_item{
-              width: 0;
-              height: 0;
-              border-style: solid;
-              border-width: 100px 100px 0 0;
-              border-color: #3EC1C9 transparent transparent transparent;
-              position: absolute;
-              top: 0;
-              left: 0;
-              padding-top: 10px;
-              &:after{
-                content: "Desided";
-                display: block;
-                color: #fff;
-                transform: rotate(-45deg);
-                letter-spacing: 2px;
-                font-weight: 600;
+              position: relative;
+              img{
+                height: 180px;
+                width: 100%;
+              }
+              .buied_item{
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 100px 100px 0 0;
+                border-color: #3EC1C9 transparent transparent transparent;
                 position: absolute;
-                top: -70px;
-                left: 0px;
+                top: 0;
+                left: 0;
+                padding-top: 10px;
+                &:after{
+                  content: "Desided";
+                  display: block;
+                  color: #fff;
+                  transform: rotate(-45deg);
+                  letter-spacing: 2px;
+                  font-weight: 600;
+                  position: absolute;
+                  top: -70px;
+                  left: 0px;
+                }
               }
             }
           }
@@ -368,54 +378,50 @@
   .tab-contents{
     width: 100%;
     .giving-animals{
-      display: none;
-      flex-wrap: wrap;
-      padding: 20px;
-      box-sizing: border-box;
-      &--link{
-        width: 33%;
-        text-decoration: none;
-        cursor: pointer;
-        &__animal{
-          margin: 20px 5px 0;
-          &--photo{
-            width: 100%;
-            position: relative;
-            img{
-              height: 120px;
+      padding: 0;
+      &__content{
+        &--link{
+          width: 33%;
+          text-decoration: none;
+          cursor: pointer;
+          &__animal{
+            margin: 20px 5px 0;
+            &--photo{
               width: 100%;
-            }
-            .buied_item{
-              width: 0;
-              height: 0;
-              border-style: solid;
-              border-width: 100px 100px 0 0;
-              border-color: #3EC1C9 transparent transparent transparent;
-              position: absolute;
-              top: 0;
-              left: 0;
-              padding-top: 10px;
-              &:after{
-                content: "Desided";
-                display: block;
-                color: #fff;
-                transform: rotate(-45deg);
-                letter-spacing: 2px;
-                font-weight: 600;
+              position: relative;
+              img{
+                height: 120px;
+                width: 100%;
+              }
+              .buied_item{
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 100px 100px 0 0;
+                border-color: #3EC1C9 transparent transparent transparent;
                 position: absolute;
-                top: -70px;
-                left: 0px;
+                top: 0;
+                left: 0;
+                padding-top: 10px;
+                &:after{
+                  content: "Desided";
+                  display: block;
+                  color: #fff;
+                  transform: rotate(-45deg);
+                  letter-spacing: 2px;
+                  font-weight: 600;
+                  position: absolute;
+                  top: -70px;
+                  left: 0px;
+                }
               }
             }
-          }
-          &--content{
-            display: none;
+            &--content{
+              display: none;
+            }
           }
         }
       }
-    }
-    .is-show{
-      display: flex;
     }
   } 
   //アカウント削除ボタン
@@ -542,35 +548,37 @@
   .tab-contents{
     width: 100%;
     .giving-animals{
-      padding: 20px;
-      &--link{
-        &__animal{
-          margin: 20px 5px 0;
-          &--photo{
-            img{
-              height: 80px;
-              object-fit: cover;
-            }
-            .buied_item{
-              width: 0;
-              height: 0;
-              border-style: solid;
-              border-width: 100px 100px 0 0;
-              border-color: #3EC1C9 transparent transparent transparent;
-              position: absolute;
-              top: 0;
-              left: 0;
-              padding-top: 10px;
-              &:after{
-                content: "Desided";
-                display: block;
-                color: #fff;
-                transform: rotate(-45deg);
-                letter-spacing: 2px;
-                font-weight: 600;
+      padding: 0;
+      &__content{
+        &--link{
+          &__animal{
+            margin: 20px 5px 0;
+            &--photo{
+              img{
+                height: 80px;
+                object-fit: cover;
+              }
+              .buied_item{
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 100px 100px 0 0;
+                border-color: #3EC1C9 transparent transparent transparent;
                 position: absolute;
-                top: -70px;
-                left: 0px;
+                top: 0;
+                left: 0;
+                padding-top: 10px;
+                &:after{
+                  content: "Desided";
+                  display: block;
+                  color: #fff;
+                  transform: rotate(-45deg);
+                  letter-spacing: 2px;
+                  font-weight: 600;
+                  position: absolute;
+                  top: -70px;
+                  left: 0px;
+                }
               }
             }
           }
