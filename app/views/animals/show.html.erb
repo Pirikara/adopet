@@ -1,4 +1,6 @@
 <main class="animal-main">
+  <% breadcrumb :animal_show %>
+  <%= render 'shared/breadcrumb'%>
   <div class="animal-images">
     <div class="animal-images__image-left">
       <% if @animal.taker_id.present?%>

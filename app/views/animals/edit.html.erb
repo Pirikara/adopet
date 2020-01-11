@@ -84,7 +84,7 @@
         </div>
         <div class="animal-form__content submit-box">
           <%= f.submit "編集する", disable_with: "Save...", class: "animal-edit__submit" %>
-          <%= link_to "もどる", root_path %>
+          <%= link_to "もどる", animal_path(@animal) %>
         </div>
       <% end %>
     </div>
