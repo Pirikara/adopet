@@ -58,7 +58,7 @@
             <%end%>
           </li>
           <!--取引メッセージ有り-->
-          <li class="giving-animals">
+          <li class="giving-animals animals-transactionmessages">
             <% if current_user.id == @user.id %>
               <div class="giving-animals__messages ">
                 <% @rooms.each do |room| %>
@@ -96,7 +96,7 @@
                               <%= time_ago_in_words(Message.new_message(room.id).created_at)%>
                             </div>
                           <%else%>
-                            <p>まだメッセージのやり取りは有りません</p>
+                            <p>メッセージしましょう</p>
                           <% end %>
                         </div>
                       </div>
@@ -117,13 +117,13 @@
                         <div class="giving-animals__messages__link--message--content">
                           <% if Message.new_message(room.id) %>
                             <div class="giving-animals__messages__link--message--content__new">
-                              <%= Message.new_message(room.id).content %>
+                              <%= Message.new_message(room.id).content.truncate(13) %>
                             </div>
                             <div class="giving-animals__messages__link--message--content__time">
                               <%= time_ago_in_words(Message.new_message(room.id).created_at)%>
                             </div>
                           <%else%>
-                            <p>まだメッセージのやり取りは有りません</p>
+                            <p>メッセージしましょう</p>
                           <% end %>
                         </div>
                       </div>
