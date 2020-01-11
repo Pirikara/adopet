@@ -1,4 +1,6 @@
 <main class="animals-main">
+  <% breadcrumb :animals_index %>
+  <%= render 'shared/breadcrumb'%>
   <div class="search_view">
     <%= form_with(scope: :search, url: search_animals_path, local: true, method: :get, class: "search-form" ) do |f| %>
       <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: 'カテゴリを選択' %>
