@@ -218,3 +218,116 @@
     }
   }
 }
+
+@media screen and (max-width: 480px){
+  .room-wrapper{
+    width: 450px;
+    margin: 40px auto 0;
+  }
+  //チャット対象の動物欄
+  .animal-informations{
+    padding: 10px 0;
+    &__image{
+      img{
+        width: 60px;
+        height: 60px;
+      }
+    }
+    &__content{
+      padding: 16px;
+      &--name{
+        font-size: 18px;
+        &--male{
+          font-size: 14px;
+        }
+        &--female{
+          font-size: 14px;
+        }
+        &--unknown{
+          font-size: 14px;
+          line-height: 30px;
+        }
+      }
+      &--prefecture{
+        font-size: 14px;
+      }
+    }
+  }
+
+  //取引相手欄
+  .counterparty-information{
+    border-bottom: 1px solid #efefef;
+    padding: 20px 0;
+    &__personal{
+      text-align: center;
+      &--icon{
+        padding-top: 5px;
+        img{
+          width: 60px;
+          height: 60px;
+        }
+      }
+      &--name{
+        font-size: 18px;
+        font-weight: bold;
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px){
+  .room-wrapper{
+    width: 350px;
+    margin: 40px auto 0;
+  }
+  .animal-informations{
+    padding: 10px 0;
+    &__image{
+      img{
+        width: 60px;
+        height: 60px;
+      }
+    }
+    &__content{
+      padding: 16px;
+      &--name{
+        font-size: 18px;
+        &--male{
+          font-size: 14px;
+        }
+        &--female{
+          font-size: 14px;
+        }
+        &--unknown{
+          font-size: 14px;
+          line-height: 30px;
+        }
+      }
+      &--prefecture{
+        font-size: 14px;
+      }
+    }
+  }
+
+  //取引相手欄
+  .counterparty-information{
+    border-bottom: 1px solid #efefef;
+    padding: 20px 0 0;
+    &__personal{
+      text-align: center;
+      &--icon{
+        padding-top: 5px;
+        img{
+          width: 60px;
+          height: 60px;
+        }
+      }
+      &--name{
+        font-size: 18px;
+        font-weight: bold;
+        padding-top: 10px;
+      }
+    }
+  }
+}
