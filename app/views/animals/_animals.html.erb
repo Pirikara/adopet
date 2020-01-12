@@ -1,5 +1,5 @@
 <div class="animals__container__content">
-  <% @animals.each do |animal| %>
+  <% @animals.find_each do |animal| %>
     <%= link_to "animals/#{animal.id}", class: "animal-show__link" do%>
       <div class="animal-show__link--cover">
         <div class="animal-show__link--cover--image">

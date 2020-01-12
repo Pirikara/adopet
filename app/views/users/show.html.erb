@@ -24,7 +24,7 @@
         <ul class="tab-contents">
           <li class="giving-animals is-show">
             <div class="giving-animals__content">
-              <% @animals.each do |animal| %>
+              <% @animals.find_each do |animal| %>
                 <%= link_to animal_path(animal.id), class: "giving-animals__content--link" do %>
                   <div class="giving-animals__content--link__animal">
                     <div class="giving-animals__content--link__animal--photo">
@@ -64,7 +64,7 @@
           <li class="giving-animals animals-transactionmessages">
             <% if current_user.id == @user.id %>
               <div class="giving-animals__messages">
-                <% @rooms.each do |room| %>
+                <% @rooms.find_each do |room| %>
                   <%=link_to animal_room_path(animal_id: room.animal_id, id: room.id), class: "giving-animals__messages__link" do%>
                     <% if current_user.id == room.host_id %>
                       <div class="giving-animals__messages__link--message">
