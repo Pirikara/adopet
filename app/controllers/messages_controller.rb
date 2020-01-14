@@ -3,8 +3,13 @@ class MessagesController < ApplicationController
   before_action :access_limit
 
   def create
-    @message = Message.create(message_params)
-    redirect_to animal_room_path(animal_id: params[:animal_id], id: params[:room_id])
+    @message = Message.new(message_params)
+    if @message.save
+      redirect_to animal_room_path(animal_id: params[:animal_id], id: params[:room_id])
+    else
+      redirect_to animal_room_path(animal_id: params[:animal_id], id: params[:room_id])
+      flash.now[:notice] = "送信に失敗しました"
+    end
   end
 
   private

@@ -3,4 +3,7 @@ class Room < ApplicationRecord
   has_many :messages
   belongs_to :host, class_name: "User"
   belongs_to :client, class_name: "User"
+
+  #validation
+  
 end
