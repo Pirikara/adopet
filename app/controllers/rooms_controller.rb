@@ -12,8 +12,12 @@ class RoomsController < ApplicationController
     #同一ユーザーが同じ動物に対して複数のroomを作成できないようにする
     rooms = Room.where(animal_id: room.animal_id, host_id: room.host_id, client_id: room.client_id)
     if rooms == []
-      room.save
-      redirect_to animal_room_path(animal_id: room.animal_id, id: room.id)
+      if room.save
+        redirect_to animal_room_path(animal_id: room.animal_id, id: room.id)
+      else
+        redirect_to animal_room_path(animal_id: room.animal_id, id: room.id)
+        flash.now[:notice] = "チャットルームの作成に失敗しました"
+      end
     else
       redirect_to animal_path(id: room.animal_id)
     end
