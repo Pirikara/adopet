@@ -4,7 +4,7 @@ class AnimalsController < ApplicationController
   before_action :user_access_limit, only: [:edit, :update, :destroy]
 
   def index
-    @animals = Animal.page(params[:page]).per(15)
+    @animals = Animal.order("id DESC").page(params[:page]).per(15)
     respond_to do |format|
       format.html
       format.js
