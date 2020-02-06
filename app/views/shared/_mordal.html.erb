@@ -57,31 +57,33 @@
       <div class="sign_in_modal__content">
         <i class="fas fa-times"></i>
         <h2>ログインフォーム</h2>
-        <%= form_with model: @user, url: user_session_path, id: "mordal__signin__form" do |f| %>
-          <div class="field">
-            <label for="user_email"></label><br>
-            <%= f.text_field :email, class: "field__input", autofocus: "autofocus", placeholder: "メールアドレスを入力してください", name: "user[email]" %>
-          </div>
+        <div class="signin__form">
+          <%= form_with model: @user, url: user_session_path, id: "mordal__signin__form" do |f| %>
+            <div class="field">
+              <label for="user_email"></label><br>
+              <%= f.text_field :email, class: "field__input", autofocus: "autofocus", placeholder: "メールアドレスを入力してください", name: "user[email]" %>
+            </div>
 
-          <div class="field">
-            <label for="user_password"></label><br>
-            <%= f.password_field :password, class: "field__input", autocomplete: "current-password", placeholder: "パスワードを入力してください", name: "user[password]" %>
-          </div>
+            <div class="field">
+              <label for="user_password"></label><br>
+              <%= f.password_field :password, class: "field__input", autocomplete: "current-password", placeholder: "パスワードを入力してください", name: "user[password]" %>
+            </div>
 
-          <div class="field">
-            <input class="field__remember" name="user[remember_me]" type="hidden" value="0">
-            <input class="field__remember" type="checkbox" value="1" name="user[remember_me]">
-            <label class="field__remember-me" for="user_remember_me">Remember me</label>
-          </div>
+            <div class="field">
+              <input class="field__remember" name="user[remember_me]" type="hidden" value="0">
+              <input class="field__remember" type="checkbox" value="1" name="user[remember_me]">
+              <label class="field__remember-me" for="user_remember_me">Remember me</label>
+            </div>
 
-          <div id="signin__errors">
-            <ul id="signin__errors__list"></ul>
-          </div>
+            <div id="signin__errors">
+              <ul id="signin__errors__list"></ul>
+            </div>
 
-          <div class="actions">
-            <%= f.submit "Log in", class: "login__submit" %>
-          </div>
-        <% end %>
+            <div class="actions">
+              <%= f.submit "Log in", class: "login__submit" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
