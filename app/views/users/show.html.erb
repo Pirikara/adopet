@@ -11,7 +11,10 @@
       </div>
     </div>
     <div class="user-description">
-      <p>よろしくお願いします</p>
+      <p><%= @user.introduce %></p>
+    </div>
+    <div class="profile-edit__link">
+      <%= link_to 'プロフィール編集>>', profile_edit_path %> 
     </div>
     <div class="user-recruitment-animals">
       <div class="user-recuruitment-animals__box">
