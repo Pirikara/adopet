@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_params, only: [:show]
   before_action :access_limit, only: [:create, :transaction]
+  before_action :room_access_limit, only: [:show]
   
   def new
     @room = Room.new
@@ -59,6 +60,14 @@ class RoomsController < ApplicationController
     @animal = Animal.find(params[:animal_id])
     if @animal.taker_id.present?
       redirect_to animal_path(@animal.id)
+    end
+  end
+
+  #個別チャットルームのメンバーでなければホームにリダイレクトされる
+  def room_access_limit
+    @room = Room.find(params[:id])
+    if @room.host_id != current_user.id && @room.client_id != current_user.id
+      redirect_to root_path
     end
   end
 end

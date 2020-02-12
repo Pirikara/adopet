@@ -24,7 +24,7 @@
       border-width: 150px 150px 0 0;
       border-color: #3EC1C9 transparent transparent transparent;
       position: absolute;
-      top: 138px;
+      top: 225px;
       left: 1px;
       padding-top: 10px;
       &:after{
@@ -355,7 +355,7 @@
         border-width: 150px 150px 0 0;
         border-color: #3EC1C9 transparent transparent transparent;
         position: absolute;
-        top: 138px;
+        top: 213px;
         left: 1px;
         padding-top: 10px;
         &:after{
@@ -635,7 +635,7 @@
         border-width: 150px 150px 0 0;
         border-color: #3EC1C9 transparent transparent transparent;
         position: absolute;
-        top: 138px;
+        top: 212px;
         left: 1px;
         padding-top: 10px;
         &:after{
@@ -747,6 +747,18 @@
               transition-duration: 0.3s;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 360px){
+  .animal-images{
+    &__image-left{
+      .buied_item{
+        top: 152px;
+        &:after{
         }
       }
     }

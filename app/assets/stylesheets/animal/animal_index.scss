@@ -283,6 +283,14 @@
           height: 100px;
           object-fit: cover;
         }
+        .buied_item{
+          border-width: 80px 80px 0 0;
+          &:after{
+            font-size: 12px;
+            top: -60px;
+            left: 0px;
+          }
+        }
       }
       &--name{
         display: none;
@@ -391,24 +399,10 @@
           -moz-border-radius-bottomright: 8px;
         }
         .buied_item{
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 100px 100px 0 0;
-          border-color: #3EC1C9 transparent transparent transparent;
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding-top: 10px;
+          border-width: 60px 60px 0 0;
           &:after{
-            content: "Decided";
-            display: block;
-            color: #fff;
-            transform: rotate(-45deg);
-            letter-spacing: 2px;
-            font-weight: 600;
-            position: absolute;
-            top: -70px;
+            font-size: 8px;
+            top: -44px;
             left: 0px;
           }
         }
