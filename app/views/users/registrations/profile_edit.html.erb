@@ -1,0 +1,37 @@
+<main class="user-show__main">
+  <section class="profile">
+    <div class="profile--edit">
+      <h1>プロフィール編集</h1>
+    </div>
+    <%= form_for current_user, url: {action: 'profile_update'} do |f| %> 
+      <div class="user-detail">
+        <div class="user-detail__box">
+          <div class="user-detail__box--photo">
+            <label for="edit-icon" class="user-icon__edit__label">
+              <%= image_tag "#{@user.icon}" %>
+              <div class="user-icon__edit__field">
+                <%= f.file_field :icon, id: "edit-icon" %>
+              </div>
+            </label>
+          </div>
+          <div class="user-detail__box--name">
+            <div class="user-detail__box--field">
+              <%= f.label :name %><br />
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", id: "edit-name" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="user-description">
+        <div class="field">
+          <%= f.label :introduce %><br />
+          <%= f.text_area :introduce, autofocus: true, autocomplete: "introduce", id: "edit-introduce" %>
+        </div>
+      </div>
+      <div class="profile-edit__actions">
+        <%= f.submit "Update" %>
+      </div>
+    <% end %>
+  </section>
+</main>
+<%= render "shared/footer"%>

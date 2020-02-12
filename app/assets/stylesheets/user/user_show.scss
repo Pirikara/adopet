@@ -44,6 +44,16 @@
   }
 }
 
+// プロフィール編集へのリンク
+.profile-edit__link{
+  padding: 10px;
+  text-align: right;
+  a{
+    color: #3EC1C9;
+    text-decoration: none;
+  }
+}
+
 //タブ切り替え部分
 .tab-group{
   display: flex;

@@ -20,9 +20,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+    yield resource if block_given?
+    if resource_updated
+      set_flash_message_for_update(resource, prev_unconfirmed_email)
+      bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+
+      respond_with resource, location: after_update_path_for(resource)
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      @errors = resource.errors.keys.map{ |key| [key, resource.errors.full_messages_for(key)]}.to_h
+      render :edit, layout: 'animals'
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -60,6 +75,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  # ユーザープロフィール編集
+  def profile_edit
+    @user = current_user
+    render layout: 'animals'
+  end
+
+  def profile_update
+    current_user.assign_attributes(account_update_params)
+    if current_user.save
+	  redirect_to my_page_path, notice: 'プロフィールを更新しました'
+    else
+      render "profile_edit", layout: 'animals'
+    end
+  end
+
+  # ユーザー登録
   def create
     @user = User.new(user_params)
     if @user.save
@@ -80,4 +111,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def customize_sign_up_params
     devise_parameter_sanitizer.permit :sign_up, keys: [:username, :email, :password, :remember_me]
   end
+
+  protected
+  # アカウント編集後、プロフィール画面に移動する
+  def after_update_path_for(resource)
+    user_path(id: current_user.id)
+  end
+
+  # アカウント編集用のパラメータ許可
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :icon, :header_image, :introduce])
+   end
 end

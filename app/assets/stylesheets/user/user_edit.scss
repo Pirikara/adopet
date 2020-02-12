@@ -1,0 +1,32 @@
+.profile--edit__container{
+  padding: 20px;
+}
+
+.user-edit__actions{
+  margin: 25px 0;
+  input{
+    height: 60px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3EC1C9;
+    border: 1px solid #3EC1C9;
+    cursor: pointer;
+  }
+}
+
+.user-edit-field{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-edit-form__input{
+  padding: 5px;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+}
